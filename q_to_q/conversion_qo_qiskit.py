@@ -133,7 +133,10 @@ def add_moment(moment, qc):
             elif moment.original_form[i]["GateInSlot"]["Name"] == "I":
                 qc.id(i)
             elif moment.original_form[i]["GateInSlot"]["Name"] == "Filler":
-                print("The fillers are empty gates so they will not be converted to qiskit", i)
+                print(
+                    "The fillers are empty gates so they will not be converted to qiskit",
+                    i,
+                )
             else:
                 unit = get_mat(
                     moment.original_form[i]["GateInSlot"]["DefinitionMatrix"]
@@ -141,12 +144,12 @@ def add_moment(moment, qc):
                 qubits = [k for k in moment.filler_q]
                 qubits.append(i)
                 qc.unitary(unit, qubits, moment.original_form[i]["GateInSlot"]["Name"])
-                if len(moment.filler_q)>0:
+                if len(moment.filler_q) > 0:
                     print(
-                    "This gate {} is not necessarily converted correctly. The order of the qubits maybe reversed Please check! ".format(
-                        moment.original_form[i]["GateInSlot"]["Name"]
+                        "This gate {} is not necessarily converted correctly. The order of the qubits maybe reversed Please check! ".format(
+                            moment.original_form[i]["GateInSlot"]["Name"]
+                        )
                     )
-                )
 
     if len(moment.control_q) != 0:
         moment_mat = get_mat(moment.original_form[0]["GateInSlot"]["DefinitionMatrix"])
@@ -199,22 +202,23 @@ def add_gates(res, qc, barrier=True):
         if barrier:
             qc.barrier()
         add_moment(momnet_i, qc)
-        
-        
+
+
 def read_circuit(path):
     file = open(path, "r")
-    content= file.read()
+    content = file.read()
     res = json.loads(content)
-    return res 
+    return res
+
 
 def puzzle_to_circuit(puzzle, initial_state=False):
-    
-    nr_q=get_nr_q(puzzle)
-    if initial_state!=False:
-        qc=QuantumCircuit(nr_q)
+
+    nr_q = get_nr_q(puzzle)
+    if initial_state != False:
+        qc = QuantumCircuit(nr_q)
         qc.initialize(initial_state)
-        add_gates(puzzle,qc,barrier=True)
+        add_gates(puzzle, qc, barrier=True)
     else:
-        qc=QuantumCircuit(nr_q)
-        add_gates(puzzle,qc,barrier=True)
+        qc = QuantumCircuit(nr_q)
+        add_gates(puzzle, qc, barrier=True)
     return qc

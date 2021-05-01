@@ -2,29 +2,38 @@ import numpy as np
 import cmath
 import json
 
+
 class intermediate_gate:
-    def __init__(self ,poarta):
-        self.name =poarta[0].name
-        self.matrice =poarta[0].to_matrix()
-        self.nrq =len(poarta[1])
-        self.qubits =[j.index for j in poarta[1]]
+    def __init__(self, poarta):
+        self.name = poarta[0].name
+        self.matrice = poarta[0].to_matrix()
+        self.nrq = len(poarta[1])
+        self.qubits = [j.index for j in poarta[1]]
 
     def print_description(self):
-        print('name:' ,self.name)
-        print('matrice:\n' ,self.matrice)
-        print('qubits:' ,self.qubits)
+        print("name:", self.name)
+        print("matrice:\n", self.matrice)
+        print("qubits:", self.qubits)
+
 
 def complex_to_QO(com):
-    return {'Real': com.real, 'Imaginary': com.imag, 'Magnitude': abs(com), 'Phase': cmath.phase(com)}
+    return {
+        "Real": com.real,
+        "Imaginary": com.imag,
+        "Magnitude": abs(com),
+        "Phase": cmath.phase(com),
+    }
 
 
 def vec_to_QO(vec):
-    v=[]
+    v = []
     for i in vec:
         v.append(complex_to_QO(i))
     return v
+
+
 def mat_to_QO(mat):
-    m=[]
+    m = []
     for i in mat:
         m.append(vec_to_QO(i))
     return m
@@ -44,31 +53,81 @@ def transpose_list(A):
 
     return B
 
-def get_gate(name, matrix, i_d=9, t=8, icon_path='Artwork/GatesIcons/CustomGate'):
+
+def get_gate(name, matrix, i_d=9, t=8, icon_path="Artwork/GatesIcons/CustomGate"):
     gate = {}
-    gate['ID'] = i_d
-    gate['Name'] = name
-    gate['Type'] = t
-    gate['IconPath'] = icon_path
-    gate['CompatibleQubits'] = int(np.log2(len(matrix)))
-    gate['DefinitionMatrix'] = mat_to_QO(matrix)  # p.matrice
+    gate["ID"] = i_d
+    gate["Name"] = name
+    gate["Type"] = t
+    gate["IconPath"] = icon_path
+    gate["CompatibleQubits"] = int(np.log2(len(matrix)))
+    gate["DefinitionMatrix"] = mat_to_QO(matrix)  # p.matrice
     return gate
 
-I=get_gate(name='I',matrix=[[1.,0.],[0.,1.]],i_d=5,t=0,icon_path='Artwork/GatesIcons/IGate')
-X=get_gate(name='X',matrix=[[0.,1.],[1.,0.]],i_d=3,t=3,icon_path='Artwork/GatesIcons/XGate')
-Y=get_gate(name='Y',matrix=[[0.,0.-1j],[0.+1j,0.]],i_d=2,t=5,icon_path='Artwork/GatesIcons/YGate')
-Z=get_gate(name='Z',matrix=[[1.,0.],[0.,-1.]],i_d=1,t=1,icon_path='Artwork/GatesIcons/ZGate')
-F=get_gate(name='Filler',matrix=[[1.,0.],[0.,1.]],i_d=1010,t=7,icon_path='Artwork/GatesIcons/FillerGate')
-CT=get_gate(name='CTRL',matrix=[[0.,0.],[0.,1.]],i_d=5,t=6,icon_path='Artwork/GatesIcons/CTRLGate')
-H=get_gate(name='H',matrix=[[1/np.sqrt(2),1/np.sqrt(2)],[1/np.sqrt(2),-1/np.sqrt(2)]],i_d=0,t=2,icon_path='Artwork/GatesIcons/HGate')
-G_list={'h':H,'x':X,'z':Z}
 
-def fill_slot(gate, vizib=False,h_aux=False,ag_slo=None,):
-    slot={}
-    slot['IsGateVisible']=vizib
-    slot['HasAuxGate']= h_aux
-    slot['GateInSlot']= gate
-    slot['AuxGateInSlot']=ag_slo
+I = get_gate(
+    name="I",
+    matrix=[[1.0, 0.0], [0.0, 1.0]],
+    i_d=5,
+    t=0,
+    icon_path="Artwork/GatesIcons/IGate",
+)
+X = get_gate(
+    name="X",
+    matrix=[[0.0, 1.0], [1.0, 0.0]],
+    i_d=3,
+    t=3,
+    icon_path="Artwork/GatesIcons/XGate",
+)
+Y = get_gate(
+    name="Y",
+    matrix=[[0.0, 0.0 - 1j], [0.0 + 1j, 0.0]],
+    i_d=2,
+    t=5,
+    icon_path="Artwork/GatesIcons/YGate",
+)
+Z = get_gate(
+    name="Z",
+    matrix=[[1.0, 0.0], [0.0, -1.0]],
+    i_d=1,
+    t=1,
+    icon_path="Artwork/GatesIcons/ZGate",
+)
+F = get_gate(
+    name="Filler",
+    matrix=[[1.0, 0.0], [0.0, 1.0]],
+    i_d=1010,
+    t=7,
+    icon_path="Artwork/GatesIcons/FillerGate",
+)
+CT = get_gate(
+    name="CTRL",
+    matrix=[[0.0, 0.0], [0.0, 1.0]],
+    i_d=5,
+    t=6,
+    icon_path="Artwork/GatesIcons/CTRLGate",
+)
+H = get_gate(
+    name="H",
+    matrix=[[1 / np.sqrt(2), 1 / np.sqrt(2)], [1 / np.sqrt(2), -1 / np.sqrt(2)]],
+    i_d=0,
+    t=2,
+    icon_path="Artwork/GatesIcons/HGate",
+)
+G_list = {"h": H, "x": X, "z": Z}
+
+
+def fill_slot(
+    gate,
+    vizib=False,
+    h_aux=False,
+    ag_slo=None,
+):
+    slot = {}
+    slot["IsGateVisible"] = vizib
+    slot["HasAuxGate"] = h_aux
+    slot["GateInSlot"] = gate
+    slot["AuxGateInSlot"] = ag_slo
     return slot
 
 
@@ -82,7 +141,7 @@ def get_QO_Circuit(circuit):
     for i in circuit.data:
         p = intermediate_gate(i)
 
-        if p.name == 'cx':
+        if p.name == "cx":
             if len(p.qubits) > 1:
                 moments = [depth[k] for k in range(nr_q)]
 
@@ -136,46 +195,53 @@ def generate_ball(nr_q):
 
 def circuit_to_puzzle(circuit):
     puzzle = {}
-    puzzle['PuzzleDefinition'] = ''
-    puzzle['PuzzleGates'] = ''
-    puzzle['AvailableGates'] = ''
-    puzzle['Tooltips'] = []
+    puzzle["PuzzleDefinition"] = ""
+    puzzle["PuzzleGates"] = ""
+    puzzle["AvailableGates"] = ""
+    puzzle["Tooltips"] = []
 
     initial_state = [[0] for i in range(2 ** len(circuit.qubits))]
     initial_state[0][0] = 1
 
-    puzzle['PuzzleDefinition'] = {}
-    puzzle['PuzzleDefinition']['ModuleID'] = 'Qiskit'
-    puzzle['PuzzleDefinition']['ID'] = 57
-    puzzle['PuzzleDefinition']['QubitCapacity'] = len(circuit.qubits)
-    puzzle['PuzzleDefinition']['GateCapacity'] = 7
-    puzzle['PuzzleDefinition']['Name'] = circuit.name
-    puzzle['PuzzleDefinition']['InitialState'] = mat_to_QO(initial_state)  #
-    puzzle['PuzzleDefinition']['FinalState'] = mat_to_QO(initial_state)  #
-    puzzle['PuzzleDefinition']['FinalBallState'] = generate_ball(len(circuit.qubits))  #
-    puzzle['PuzzleDefinition']['Difficulty'] = 'Beginner'
-    puzzle['PuzzleDefinition']['PuzzleType'] = 'General'
-    puzzle['PuzzleDefinition']['Description'] = 'SavePuzzlePanel(Clone)'
+    puzzle["PuzzleDefinition"] = {}
+    puzzle["PuzzleDefinition"]["ModuleID"] = "Qiskit"
+    puzzle["PuzzleDefinition"]["ID"] = 57
+    puzzle["PuzzleDefinition"]["QubitCapacity"] = len(circuit.qubits)
+    puzzle["PuzzleDefinition"]["GateCapacity"] = 7
+    puzzle["PuzzleDefinition"]["Name"] = circuit.name
+    puzzle["PuzzleDefinition"]["InitialState"] = mat_to_QO(initial_state)  #
+    puzzle["PuzzleDefinition"]["FinalState"] = mat_to_QO(initial_state)  #
+    puzzle["PuzzleDefinition"]["FinalBallState"] = generate_ball(len(circuit.qubits))  #
+    puzzle["PuzzleDefinition"]["Difficulty"] = "Beginner"
+    puzzle["PuzzleDefinition"]["PuzzleType"] = "General"
+    puzzle["PuzzleDefinition"]["Description"] = "SavePuzzlePanel(Clone)"
 
-    puzzle['PuzzleGates'] = transpose_list(get_QO_Circuit(circuit))
+    puzzle["PuzzleGates"] = transpose_list(get_QO_Circuit(circuit))
 
-    puzzle['AvailableGates'] = [H, Z, Y, X, CT]
+    puzzle["AvailableGates"] = [H, Z, Y, X, CT]
 
     return puzzle
 
 
 def change_init_state(puzzle, vec):
-    puzzle['PuzzleDefinition']['InitialState'] = vec_to_QO(vec)
+    puzzle["PuzzleDefinition"]["InitialState"] = vec_to_QO(vec)
 
 
 def change_final_state(puzzle, vec):
-    puzzle['PuzzleDefinition']['FinalState'] = vec_to_QO(vec)
+    puzzle["PuzzleDefinition"]["FinalState"] = vec_to_QO(vec)
 
 
 def add_gate(puzzle, gate):
-    puzzle['AvailableGates'].append(gate)
-    
-def seve_puzzle(puzzle, name ):
-    with open('Circuits/QK_QO/'+name+'.qpf', 'w') as f:
-        json.dump(puzzle, f,indent=4)
-    print (puzzle['PuzzleDefinition']['Name'] +' saved:'+'Circuits/QK_QO/'+name+'.qpf')
+    puzzle["AvailableGates"].append(gate)
+
+
+def seve_puzzle(puzzle, name):
+    with open("Circuits/QK_QO/" + name + ".qpf", "w") as f:
+        json.dump(puzzle, f, indent=4)
+    print(
+        puzzle["PuzzleDefinition"]["Name"]
+        + " saved:"
+        + "Circuits/QK_QO/"
+        + name
+        + ".qpf"
+    )
