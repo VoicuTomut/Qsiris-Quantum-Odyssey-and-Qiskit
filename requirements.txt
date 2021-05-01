@@ -1,4 +1,4 @@
 numpy
-cmath
-json
-'qiskit[visualization]'
+jsons
+qiskit
+jupyter
