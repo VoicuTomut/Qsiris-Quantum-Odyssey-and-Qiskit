@@ -201,8 +201,20 @@ def add_gates(res, qc, barrier=True):
         add_moment(momnet_i, qc)
         
         
-def read_circuiit(path):
+def read_circuit(path):
     file = open(path, "r")
     content= file.read()
     res = json.loads(content)
     return res 
+
+def puzzle_to_circuit(puzzle, initial_state=False):
+    
+    nr_q=get_nr_q(puzzle)
+    if initial_state!=False:
+        qc=QuantumCircuit(nr_q)
+        qc.initialize(initial_state)
+        add_gates(puzzle,qc,barrier=True)
+    else:
+        qc=QuantumCircuit(nr_q)
+        add_gates(puzzle,qc,barrier=True)
+    return qc
