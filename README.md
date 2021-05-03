@@ -30,5 +30,5 @@ In python-server branch I implemented a server which can receive as requests cir
     │
     ├── README.md
     │
-    └── requrements.txt
+    └── requirements.txt
 
