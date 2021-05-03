@@ -1,7 +1,7 @@
 
 # QO_zxo
 
-QO_zxo is a tool that makes Quantum Oddysey circuits compatible with Qiskit and allows circuits from [Qiskit](https://qiskit.org)to be visualized and run as puzzles in [Quantum Oddisey](https://www.quarksinteractive.com).
+QO_zxo is a tool that makes Quantum Oddysey circuits compatible with Qiskit and allows circuits from [Qiskit](https://qiskit.org) to be visualized and run as puzzles in [Quantum Oddisey](https://www.quarksinteractive.com).
 
 ## Idea 
 
