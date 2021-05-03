@@ -35,7 +35,7 @@ a qasm decomposition. I hope that, in the future, it will be connected
 
 
 ## Project Organization
-------------
+-------------
     │
     ├── circuits                              < Colection of circuits       
     │   ├── qiskit_to_odyssey                 < Examples generate by Qsiris               
