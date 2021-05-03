@@ -1,0 +1,6 @@
+flask
+waitress
+json_tricks
+qiskit
+pyzx
+numpy
