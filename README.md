@@ -9,7 +9,7 @@ Quantum Odyssey(QO)is a game that allows you to develop a quantum intuition. But
 
 It would also be great if the puzzles from QO would run on a real hardware from IBM . That is why I added a QO to Qiskit convertor.
 
-In python-server branch I implemented a server which can receive as requests circuits in QO format and return a result of the circuit run in qiskit and qasm decomposition. I hope that, in the future, it will be connected directly to QO (see  old work branch).
+In python-server branch I implemented a server which can receive as requests circuits in QO format and return a result of the circuit run in qiskit and a qasm decomposition. I hope that, in the future, it will be connected directly to QO (see  old work branch).
 
 
 ## Project Organization
