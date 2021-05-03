@@ -5,6 +5,10 @@ import json
 
 class intermediate_gate:
     def __init__(self, poarta):
+        """Create a new intermediate_gate"""
+        """
+        :param poarta: qiskit gate 
+        """
         self.name = poarta[0].name
         self.matrice = poarta[0].to_matrix()
         self.nrq = len(poarta[1])
@@ -17,6 +21,11 @@ class intermediate_gate:
 
 
 def complex_to_QO(com):
+    """
+    :param com:'complex'
+    :return: dictionary with the following structure:
+    {'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0}
+    """
     return {
         "Real": com.real,
         "Imaginary": com.imag,
@@ -26,6 +35,11 @@ def complex_to_QO(com):
 
 
 def vec_to_QO(vec):
+    """
+    :param vec: vector of complex numbers.
+    :return: vector of dictionaries with the following structure:
+    {'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0}
+    """
     v = []
     for i in vec:
         v.append(complex_to_QO(i))
@@ -33,6 +47,12 @@ def vec_to_QO(vec):
 
 
 def mat_to_QO(mat):
+    """
+    :param mat: matrix of complex numbers
+    :return: matrix of dictionaries with the following structure:
+    ex:
+    {'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0}
+    """
     m = []
     for i in mat:
         m.append(vec_to_QO(i))
@@ -40,6 +60,10 @@ def mat_to_QO(mat):
 
 
 def transpose_list(A):
+    """
+    :param A: [[]]
+    :return: transpose of A
+    """
     c = len(A[0])
     l = len(A)
 
@@ -55,6 +79,24 @@ def transpose_list(A):
 
 
 def get_gate(name, matrix, i_d=9, t=8, icon_path="Artwork/GatesIcons/CustomGate"):
+    """
+    :param name: (name of the gate) str
+    :param matrix: (unitary matrix)np.array
+    :param i_d: (ID)int
+    :param t: (gate Type)int
+    :param icon_path: (path to the gate icon)str
+    :return: gate as a dictionary with the following structure:
+    ex:
+    {'ID': 3,
+       'Name': 'X',
+       'Type': 3,
+       'IconPath': 'Artwork/GatesIcons/XGate',
+       'CompatibleQubits': 1,
+       'DefinitionMatrix': [[{'Real': 0.0,'Imaginary': 0.0,'Magnitude': 0.0,'Phase': 0.0},
+         {'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0}],
+        [{'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0},
+         {'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0}]]}
+    """
     gate = {}
     gate["ID"] = i_d
     gate["Name"] = name
@@ -123,6 +165,19 @@ def fill_slot(
     h_aux=False,
     ag_slo=None,
 ):
+    """
+    :param gate: (gate) dictionary
+    :param vizib: (True/False)
+    :param h_aux: (True/False)
+
+    :return: dictionary with the following structure:
+    ex:
+    {'IsGateVisible': True,
+    'HasAuxGate': False,
+    'GateInSlot': gate
+    'AuxGateInSlot': None}
+    """
+
     slot = {}
     slot["IsGateVisible"] = vizib
     slot["HasAuxGate"] = h_aux
@@ -132,6 +187,10 @@ def fill_slot(
 
 
 def get_QO_Circuit(circuit):
+    """
+    :param circuit: qiskit circuit
+    :return: odyssey circuit as a dictionary
+    """
     nr_q = len(circuit.qubits)
     gate_depth = 7
     depth = [0 for i in range(nr_q)]
@@ -188,12 +247,27 @@ c1 = {"Real": 1.0, "Imaginary": 0.0, "Magnitude": 0.0, "Phase": 0.0}
 
 
 def generate_ball(nr_q):
+    """
+     :param nr_q: (number of qubits) int
+     :return: vector of dictionaries that represent ball states:
+     ex:
+    [{'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0},
+     {'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0},
+     {'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0},
+     {'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0}],
+    """
     ball = [[c0 for k in range(2 ** nr_q)] for ko in range(2 ** nr_q)]
     ball[0][0] = c1
     return ball
 
 
-def circuit_to_puzzle(circuit,gate_cap=7,puzzle_type="General"):
+def circuit_to_puzzle(circuit, gate_cap=7, puzzle_type="General"):
+    """
+    :param circuit: qiskit circuit
+    :param gate_cap: (depth of the circuit in odyssey)int
+    :param puzzle_type:(puzzle type)str
+    :return: (puzzle)dictionary
+    """
     puzzle = {}
     puzzle["PuzzleDefinition"] = ""
     puzzle["PuzzleGates"] = ""
@@ -213,7 +287,7 @@ def circuit_to_puzzle(circuit,gate_cap=7,puzzle_type="General"):
     puzzle["PuzzleDefinition"]["FinalState"] = mat_to_QO(initial_state)  #
     puzzle["PuzzleDefinition"]["FinalBallState"] = generate_ball(len(circuit.qubits))  #
     puzzle["PuzzleDefinition"]["Difficulty"] = "Beginner"
-    puzzle["PuzzleDefinition"]["PuzzleType"] =puzzle_type
+    puzzle["PuzzleDefinition"]["PuzzleType"] = puzzle_type
     puzzle["PuzzleDefinition"]["Description"] = "SavePuzzlePanel(Clone)"
 
     puzzle["PuzzleGates"] = transpose_list(get_QO_Circuit(circuit))
@@ -224,18 +298,36 @@ def circuit_to_puzzle(circuit,gate_cap=7,puzzle_type="General"):
 
 
 def change_init_state(puzzle, vec):
+    """
+    :param puzzle: (puzzle)
+    :param vec: ([])np.array
+    change initial state of puzzle
+    """
     puzzle["PuzzleDefinition"]["InitialState"] = vec_to_QO(vec)
 
 
 def change_final_state(puzzle, vec):
+    """
+    :param puzzle: (puzzle)
+    :param vec: ([])np.array
+    change final state of puzzle
+    """
     puzzle["PuzzleDefinition"]["FinalState"] = vec_to_QO(vec)
 
 
 def add_gate(puzzle, gate):
+    """
+    Add gate to a puzzle as "AvailableGates"
+    """
     puzzle["AvailableGates"].append(gate)
 
 
 def seve_puzzle(puzzle, name):
+    """
+    :param puzzle: (puzzle)dictionary
+    :param name: (name)str
+    Save puzzle in qpf format for Odissey
+    """
     with open("Circuits/QK_QO/" + name + ".qpf", "w") as f:
         json.dump(puzzle, f, indent=4)
     print(

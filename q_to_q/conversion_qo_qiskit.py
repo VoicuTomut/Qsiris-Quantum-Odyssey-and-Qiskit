@@ -1,13 +1,14 @@
 import json
-
 import numpy as np
-import cmath
 
-from qiskit import QuantumCircuit, transpile
-from qiskit import Aer, execute
+from qiskit import QuantumCircuit
 
 
 def get_nr_q(res):
+    """
+    :param res: (puzzle)dictionary
+    :return: (number of qubits from puzzle)int
+    """
     nr_q = res["PuzzleDefinition"]["QubitCapacity"]
     return nr_q
 
@@ -20,6 +21,10 @@ nr_q=get_nr_q(res)
 
 
 def get_complex(comp):
+    """
+    :param comp: complex number as a dictionary
+    :return:'complex'
+    """
     return comp["Real"] + 1j * comp["Imaginary"]
 
 
@@ -32,6 +37,10 @@ print("Complex number:",comp_nr)
 
 
 def get_statevector(stv):
+    """
+    :param stv: vector of complex numbers in dictionary form
+    :return: vector of complex numbers
+    """
     init_st = []
     for i in stv:
         init_st.append(get_complex(i[0]))
@@ -50,6 +59,10 @@ print(stat_v)
 
 
 def get_mat(mat):
+    """
+    :param mat: matrix  of complex numbers in dictionary form
+    :return: martix ov 'complex' mubers
+    """
     mat_conv = []
     for i in mat:
         linie = []
@@ -72,6 +85,10 @@ print("matrice:\n",g_mat)
 
 
 def transpose_list(A):
+    """
+    :param A: [[]]
+    :return: transpose A
+    """
     c = len(A[0])
     l = len(A)
 
@@ -111,6 +128,11 @@ class Moment:
 
 
 def mat_gate(mat, name):
+    """
+    :param mat:  unitary matrix
+    :param name: ( gate name )str
+    :return: qiskit gate
+    """
     nr_q = int(np.log2(len(mat)))
     qc = QuantumCircuit(nr_q, name=name)
     qubits = [i for i in range(nr_q)]
@@ -120,6 +142,11 @@ def mat_gate(mat, name):
 
 
 def add_moment(moment, qc):
+    """
+    :param moment: string of gates
+    :param qc: QuantumCircuit qiskit
+    Add gates from monent to the  qiskit circuit
+    """
     if len(moment.control_q) == 0:
         for i in range(moment.nr_q):
             if moment.original_form[i]["GateInSlot"]["Name"] == "X":
@@ -190,10 +217,14 @@ def add_moment(moment, qc):
                     + str(i)
                     + "]",
                 )
-        # Pot incerca si o solutie in care sa descompun efectiv poarta ca aici :https://arxiv.org/pdf/quant-ph/9503016.pdf
 
 
 def add_gates(res, qc, barrier=True):
+    """
+    :param res: (puzzle)dictionary
+    :param qc: Qiskit Circuit
+    Add gate fro puzzle to qiskit circuit
+    """
     mo = 0
     for i in transpose_list(res["PuzzleGates"]):
         mo = mo + 1
@@ -205,6 +236,10 @@ def add_gates(res, qc, barrier=True):
 
 
 def read_circuit(path):
+    """
+    :param path: (path to the puzzle)str
+    :return: (puzzle)dictionary
+    """
     file = open(path, "r")
     content = file.read()
     res = json.loads(content)
@@ -212,6 +247,11 @@ def read_circuit(path):
 
 
 def puzzle_to_circuit(puzzle, initial_state=False):
+    """
+    :param puzzle: (puzzle)dictionary
+    :param initial_state: (initial qubits state ) string of dictionaries
+    :return: quantum circuit in qiskit equivalent with the circuit from puzzle
+    """
 
     nr_q = get_nr_q(puzzle)
     if initial_state != False:

@@ -4,7 +4,7 @@
         "ID": 57,
         "QubitCapacity": 3,
         "GateCapacity": 7,
-        "Name": "circuit-2",
+        "Name": "circuit-3",
         "InitialState": [
             [
                 {
