@@ -26,22 +26,22 @@ and any gates requirements you have and let’s see if gamers that run QO can
 find ways to optimize your algorithm! 
 
 
-## *Server* branch
+## *Server* branch (work in progress)
  
-In python-server branch I implemented a server which can receive as requests 
-circuits in QO format and return a result of the circuit run in qiskit and 
-a qasm decomposition. I hope that, in the future, it will be connected
- directly to QO (see  old work branch).
+In python-server branch is a server which can receive as requests 
+circuits in QO format and return a result of the circuit run in Qiskit and 
+a QASM decomposition. Qiskit circuits will be executed on different backends 
+incl. real hardware. 
 
 
 ## Project Organization
 -------------
     │
     ├── circuits                              < Colection of circuits       
-    │   ├── qiskit_to_odyssey                 < Examples generate by Qsiris               
-    │   └── odyssey_circuits                  < QO save files
+    │   ├── qiskit_to_odyssey                 < Qsiris saves files here               
+    │   └── odyssey_circuits                  < QO refence files
     │
-    ├── project_qisiris                       <  The code
+    ├── project_qsiris                        <  The code
     │   ├── conversion_qiskit_qo.py                      
     │   └── conversion__qo_qiskit.py                                   
     │
