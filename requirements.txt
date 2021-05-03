@@ -1,4 +1,5 @@
 numpy
 jsons
-qiskit
+matplotlib
+qiskit[visualization]
 jupyter

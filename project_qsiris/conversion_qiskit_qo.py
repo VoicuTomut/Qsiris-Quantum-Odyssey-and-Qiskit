@@ -333,12 +333,13 @@ def save_puzzle(puzzle, name):
     :param name: (name)str
     Save puzzle in qpf format for Odissey
     """
-    with open("Circuits/QK_QO/" + name + ".qpf", "w") as f:
+
+    with open("circuits/qiskit_to_odyssey/" + name + ".qpf", "w") as f:
         json.dump(puzzle, f, indent=4)
     print(
         puzzle["PuzzleDefinition"]["Name"]
         + " saved:"
-        + "Circuits/QK_QO/"
+        + "circuits/qiskit_to_odyssey/"
         + name
         + ".qpf"
     )
