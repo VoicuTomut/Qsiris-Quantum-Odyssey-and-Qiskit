@@ -193,7 +193,7 @@ def generate_ball(nr_q):
     return ball
 
 
-def circuit_to_puzzle(circuit):
+def circuit_to_puzzle(circuit,gate_cap=7,puzzle_type="General"):
     puzzle = {}
     puzzle["PuzzleDefinition"] = ""
     puzzle["PuzzleGates"] = ""
@@ -207,13 +207,13 @@ def circuit_to_puzzle(circuit):
     puzzle["PuzzleDefinition"]["ModuleID"] = "Qiskit"
     puzzle["PuzzleDefinition"]["ID"] = 57
     puzzle["PuzzleDefinition"]["QubitCapacity"] = len(circuit.qubits)
-    puzzle["PuzzleDefinition"]["GateCapacity"] = 7
+    puzzle["PuzzleDefinition"]["GateCapacity"] = gate_cap
     puzzle["PuzzleDefinition"]["Name"] = circuit.name
     puzzle["PuzzleDefinition"]["InitialState"] = mat_to_QO(initial_state)  #
     puzzle["PuzzleDefinition"]["FinalState"] = mat_to_QO(initial_state)  #
     puzzle["PuzzleDefinition"]["FinalBallState"] = generate_ball(len(circuit.qubits))  #
     puzzle["PuzzleDefinition"]["Difficulty"] = "Beginner"
-    puzzle["PuzzleDefinition"]["PuzzleType"] = "General"
+    puzzle["PuzzleDefinition"]["PuzzleType"] =puzzle_type
     puzzle["PuzzleDefinition"]["Description"] = "SavePuzzlePanel(Clone)"
 
     puzzle["PuzzleGates"] = transpose_list(get_QO_Circuit(circuit))

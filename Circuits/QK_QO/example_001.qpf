@@ -4,7 +4,7 @@
         "ID": 57,
         "QubitCapacity": 3,
         "GateCapacity": 7,
-        "Name": "circuit-0",
+        "Name": "circuit-2",
         "InitialState": [
             [
                 {
@@ -592,7 +592,7 @@
                 "HasAuxGate": false,
                 "GateInSlot": {
                     "ID": 9,
-                    "Name": "u3",
+                    "Name": "u",
                     "Type": 8,
                     "IconPath": "Artwork/GatesIcons/CustomGate",
                     "CompatibleQubits": 1,
