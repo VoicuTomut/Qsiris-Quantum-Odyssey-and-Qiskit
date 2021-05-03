@@ -4,7 +4,7 @@ import numpy as np
 from qiskit import QuantumCircuit
 
 
-def get_nr_q(res):
+def odyssey_get_nr_q(res):
     """
     :param res: (puzzle)dictionary
     :return: (number of qubits from puzzle)int
@@ -235,25 +235,19 @@ def add_gates(res, qc, barrier=True):
         add_moment(momnet_i, qc)
 
 
-def read_circuit(path):
-    """
-    :param path: (path to the puzzle)str
-    :return: (puzzle)dictionary
-    """
-    file = open(path, "r")
-    content = file.read()
-    res = json.loads(content)
-    return res
-
-
-def puzzle_to_circuit(puzzle, initial_state=False):
+def puzzle_to_circuit(path, initial_state=False):
     """
     :param puzzle: (puzzle)dictionary
     :param initial_state: (initial qubits state ) string of dictionaries
     :return: quantum circuit in qiskit equivalent with the circuit from puzzle
     """
 
-    nr_q = get_nr_q(puzzle)
+    file = open(path, "r")
+    content = file.read()
+    puzzle = json.loads(content)
+
+    nr_q = odyssey_get_nr_q(puzzle)
+
     if initial_state != False:
         qc = QuantumCircuit(nr_q)
         qc.initialize(initial_state)
