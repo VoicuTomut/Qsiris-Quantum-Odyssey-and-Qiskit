@@ -78,7 +78,8 @@ def transpose_list(A):
     return B
 
 
-def get_gate(name, matrix, i_d=9, t=8, icon_path="Artwork/GatesIcons/CustomGate"):
+def get_gate(name, matrix, i_d=9, t=8,
+             icon_path="Artwork/GatesIcons/CustomGate"):
     """
     :param name: (name of the gate) str
     :param matrix: (unitary matrix)np.array
@@ -151,7 +152,8 @@ CT = get_gate(
 )
 H = get_gate(
     name="H",
-    matrix=[[1 / np.sqrt(2), 1 / np.sqrt(2)], [1 / np.sqrt(2), -1 / np.sqrt(2)]],
+    matrix=[[1 / np.sqrt(2), 1 / np.sqrt(2)],
+            [1 / np.sqrt(2), -1 / np.sqrt(2)]],
     i_d=0,
     t=2,
     icon_path="Artwork/GatesIcons/HGate",
@@ -160,10 +162,10 @@ G_list = {"h": H, "x": X, "z": Z}
 
 
 def fill_slot(
-    gate,
-    vizib=False,
-    h_aux=False,
-    ag_slo=None,
+        gate,
+        vizib=False,
+        h_aux=False,
+        ag_slo=None,
 ):
     """
     :param gate: (gate) dictionary
@@ -208,8 +210,10 @@ def get_QO_Circuit(circuit):
                 for j in range(nr_q):
                     depth[j] = moment
 
-                Circuit[depth[p.qubits[0]]][p.qubits[0]] = fill_slot(CT, vizib=True)
-                Circuit[depth[p.qubits[1]]][p.qubits[1]] = fill_slot(X, vizib=True)
+                Circuit[depth[p.qubits[0]]][p.qubits[0]] = fill_slot(CT,
+                                                                     vizib=True)
+                Circuit[depth[p.qubits[1]]][p.qubits[1]] = fill_slot(X,
+                                                                     vizib=True)
 
                 for j in range(nr_q):
                     depth[j] = depth[j] + 1
@@ -285,7 +289,8 @@ def circuit_to_puzzle(circuit, gate_cap=7, puzzle_type="General"):
     puzzle["PuzzleDefinition"]["Name"] = circuit.name
     puzzle["PuzzleDefinition"]["InitialState"] = mat_to_QO(initial_state)  #
     puzzle["PuzzleDefinition"]["FinalState"] = mat_to_QO(initial_state)  #
-    puzzle["PuzzleDefinition"]["FinalBallState"] = generate_ball(len(circuit.qubits))  #
+    puzzle["PuzzleDefinition"]["FinalBallState"] = generate_ball(
+        len(circuit.qubits))  #
     puzzle["PuzzleDefinition"]["Difficulty"] = "Beginner"
     puzzle["PuzzleDefinition"]["PuzzleType"] = puzzle_type
     puzzle["PuzzleDefinition"]["Description"] = "SavePuzzlePanel(Clone)"
@@ -322,7 +327,7 @@ def add_gate(puzzle, gate):
     puzzle["AvailableGates"].append(gate)
 
 
-def seve_puzzle(puzzle, name):
+def save_puzzle(puzzle, name):
     """
     :param puzzle: (puzzle)dictionary
     :param name: (name)str
