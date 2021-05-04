@@ -44,6 +44,7 @@ def _fill_slot(
     slot["HasAuxGate"] = h_aux
     slot["GateInSlot"] = gate
     slot["AuxGateInSlot"] = ag_slo
+
     return slot
 
 
@@ -55,8 +56,8 @@ def _get_odyssey_circuit(qiskit_circuit):
     nr_q = len(qiskit_circuit.qubits)
     gate_depth = 7
 
-    depth = [0 * nr_q]
-    qo_circuit = [[_fill_slot(conv.I) * nr_q] * gate_depth]
+    depth = [0 for _ in range(nr_q)]
+    qo_circuit = [[_fill_slot(conv.I) for _ in range(nr_q)] for _ in range(gate_depth)]
 
     for qiskit_gate in qiskit_circuit.data:
         p = IntermediateGate(qiskit_gate)
