@@ -62,6 +62,7 @@ def _transpose_list(A):
 
     return B
 
+
 def _get_odyssey_gate(name, matrix, i_d=9, t=8,
                       icon_path="Artwork/GatesIcons/CustomGate"):
     """

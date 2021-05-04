@@ -3,6 +3,8 @@ import numpy as np
 
 from qiskit import QuantumCircuit
 
+import project_qsiris.conversion_gates as conv
+
 
 def odyssey_get_nr_q(res):
     """
@@ -69,6 +71,7 @@ def get_mat(mat):
         for j in i:
             linie.append(get_complex(j))
         mat_conv.append(linie)
+
     return mat_conv
 
 
@@ -82,25 +85,6 @@ mat=[[{'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0},
 g_mat=get_mat(mat)
 print("matrice:\n",g_mat)
 """
-
-
-def transpose_list(A):
-    """
-    :param A: [[]]
-    :return: transpose A
-    """
-    c = len(A[0])
-    l = len(A)
-
-    B = [["" for i in range(l)] for j in range(c)]
-
-    b_c = 0
-
-    for j in range(c):
-        for i in range(l):
-            B[j][i] = A[i][j]
-
-    return B
 
 
 class OdysseyMoment:
@@ -232,7 +216,7 @@ def add_gates(res, qc, barrier=True):
     Add gate fro puzzle to qiskit circuit
     """
     mo = 0
-    for puzzle_gate in transpose_list(res["PuzzleGates"]):
+    for puzzle_gate in conv._transpose_list(res["PuzzleGates"]):
         mo = mo + 1
         nr_gates_moment = len(puzzle_gate)
 
@@ -242,9 +226,9 @@ def add_gates(res, qc, barrier=True):
         add_moment(puzzle_gate, qc)
 
 
-def puzzle_to_circuit(path, initial_state=False):
+def odyssey_puzzle_to_qiskit_circuit(path, initial_state=False):
     """
-    :param puzzle: (puzzle)dictionary
+    :param path: (puzzle) path to puzzle
     :param initial_state: (initial qubits state ) string of dictionaries
     :return: quantum circuit in qiskit equivalent with the circuit from puzzle
     """
@@ -254,12 +238,11 @@ def puzzle_to_circuit(path, initial_state=False):
     puzzle = json.loads(content)
 
     nr_q = odyssey_get_nr_q(puzzle)
+    qc = QuantumCircuit(nr_q)
 
     if initial_state != False:
-        qc = QuantumCircuit(nr_q)
         qc.initialize(initial_state)
-        add_gates(puzzle, qc, barrier=True)
-    else:
-        qc = QuantumCircuit(nr_q)
-        add_gates(puzzle, qc, barrier=True)
+
+    add_gates(puzzle, qc, barrier=True)
+
     return qc

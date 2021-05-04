@@ -54,9 +54,9 @@ def get_odyssey_circuit(qiskit_circuit):
     """
     nr_q = len(qiskit_circuit.qubits)
     gate_depth = 7
-    depth = [0 for i in range(nr_q)]
 
-    qo_circuit = [[fill_slot(conv.I) for i in range(nr_q)] for j in range(gate_depth)]
+    depth = [0 * nr_q]
+    qo_circuit = [[fill_slot(conv.I) * nr_q] * gate_depth]
 
     for qiskit_gate in qiskit_circuit.data:
         p = IntermediateGate(qiskit_gate)
@@ -121,7 +121,7 @@ def generate_ball(nr_q):
     return ball
 
 
-def circuit_to_puzzle(qiskit_circuit, gate_cap=7, puzzle_type="General"):
+def qiskit_circuit_to_odyssey_puzzle(qiskit_circuit, gate_cap=7, puzzle_type="General"):
     """
     :param qiskit_circuit: qiskit circuit
     :param gate_cap: (depth of the circuit in odyssey)int
@@ -134,7 +134,7 @@ def circuit_to_puzzle(qiskit_circuit, gate_cap=7, puzzle_type="General"):
     puzzle["AvailableGates"] = ""
     puzzle["Tooltips"] = []
 
-    initial_state = [[0] for i in range(2 ** len(qiskit_circuit.qubits))]
+    initial_state = [[0] * (2 ** len(qiskit_circuit.qubits))]
     initial_state[0][0] = 1
 
     puzzle["PuzzleDefinition"] = {}
@@ -152,7 +152,6 @@ def circuit_to_puzzle(qiskit_circuit, gate_cap=7, puzzle_type="General"):
     puzzle["PuzzleDefinition"]["Description"] = "SavePuzzlePanel(Clone)"
 
     puzzle["PuzzleGates"] = conv._transpose_list(get_odyssey_circuit(qiskit_circuit))
-
     puzzle["AvailableGates"] = [conv.H, conv.Z, conv.Y, conv.X, conv.CT]
 
     return puzzle
