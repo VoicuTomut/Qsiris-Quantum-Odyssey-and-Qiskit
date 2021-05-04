@@ -54,8 +54,8 @@ def decompose_qiskit(res):
 def real_device_qiskit(res):
 
     IBMQ.load_account()
-    provider =IBMQ.get_provider('ibm-q')
-    ibmq_lima=provider.get_backend("ibmq_lima")
+    provider = IBMQ.get_provider('ibm-q')
+    ibmq_lima = provider.get_backend("ibmq_lima")
 
     qc = odyssey_to_qiskit(res,
                            incl_initial_state=False,
