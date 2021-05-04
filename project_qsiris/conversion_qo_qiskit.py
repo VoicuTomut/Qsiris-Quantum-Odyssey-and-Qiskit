@@ -1,7 +1,7 @@
 import json
 import numpy as np
 
-from qiskit import QuantumCircuit
+from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 
 import project_qsiris.conversion_gates as conv
 from project_qsiris.conversion_intermediates import OdysseyMoment
@@ -143,7 +143,7 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
     """
 
     nr_q = get_odyssey_nr_qubits(puzzle)
-    qc = QuantumCircuit(nr_q)
+    qc = QuantumCircuit(QuantumRegister(nr_q), ClassicalRegister(nr_q))
 
     if incl_initial_state != False:
         qc.initialize(incl_initial_state)
@@ -154,7 +154,7 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
         add_odyssey_moment(puzzle_gate, qc)
 
     if incl_all_measurements:
-        qubits = list(range(nr_q))
-        qc.measure(qubits, qubits[::-1])
+        for index in range(nr_q):
+            qc.measure(qc.qregs[0][index], qc.cregs[0][nr_q - 1 - index])
 
     return qc
