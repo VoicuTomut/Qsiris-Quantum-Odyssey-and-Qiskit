@@ -4,6 +4,18 @@ import cmath
 c0 = {"Real": 0.0, "Imaginary": 0.0, "Magnitude": 0.0, "Phase": 0.0}
 c1 = {"Real": 1.0, "Imaginary": 0.0, "Magnitude": 0.0, "Phase": 0.0}
 
+def _odyssey_to_complex(comp):
+    """
+    :param comp: complex number as a dictionary
+    :return:'complex'
+
+    #example:
+    comp={'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0}
+    comp_nr=get_complex(comp)
+    print("Complex number:",comp_nr)
+    """
+    return comp["Real"] + 1j * comp["Imaginary"]
+
 def _complex_to_odyssey(com):
     """
     :param com:'complex'

@@ -1,24 +1,7 @@
 import json
 
 import project_qsiris.conversion_gates as conv
-
-
-class IntermediateGate:
-    def __init__(self, gate):
-        """Create a new IntermediateGate"""
-        """
-        :param gate: Qiskit gate
-        """
-        self.name = gate[0].name
-        self.matrice = gate[0].to_matrix()
-        self.nrq = len(gate[1])
-        self.qubits = [j.index for j in gate[1]]
-
-    def print_description(self):
-        print("name:", self.name)
-        print("matrice:\n", self.matrice)
-        print("qubits:", self.qubits)
-
+from project_qsiris.conversion_intermediates import IntermediateGate
 
 def _fill_slot(
         gate,
@@ -60,20 +43,20 @@ def _get_odyssey_circuit(qiskit_circuit):
     qo_circuit = [[_fill_slot(conv.I) for _ in range(nr_q)] for _ in range(gate_depth)]
 
     for qiskit_gate in qiskit_circuit.data:
-        p = IntermediateGate(qiskit_gate)
+        interm_gate = IntermediateGate(qiskit_gate)
 
-        if p.name == "cx":
-            if len(p.qubits) > 1:
+        if interm_gate.name == "cx":
+            if len(interm_gate.qubits) > 1:
                 moments = [depth[k] for k in range(nr_q)]
 
                 moment = max(moments)
                 for j in range(nr_q):
                     depth[j] = moment
 
-                q_0 = p.qubits[0]
+                q_0 = interm_gate.qubits[0]
                 qo_circuit[depth[q_0]][q_0] = _fill_slot(conv.CT, visib=True)
 
-                q_1 = p.qubits[1]
+                q_1 = interm_gate.qubits[1]
                 qo_circuit[depth[q_1]][q_1] = _fill_slot(conv.X, visib=True)
 
                 for j in range(nr_q):
@@ -81,26 +64,26 @@ def _get_odyssey_circuit(qiskit_circuit):
 
         else:
 
-            if len(p.qubits) > 1:
-                moments = [depth[k] for k in p.qubits]
+            if len(interm_gate.qubits) > 1:
+                moments = [depth[k] for k in interm_gate.qubits]
 
                 moment = max(moments)
-                for j in p.qubits:
+                for j in interm_gate.qubits:
                     depth[j] = moment
 
-            for j in range(len(p.qubits) - 1):
-                q = p.qubits[j]
+            for j in range(len(interm_gate.qubits) - 1):
+                q = interm_gate.qubits[j]
                 # Circuit[depth[q]][q]=p.name+'-F'
                 qo_circuit[depth[q]][q] = _fill_slot(conv.F, visib=True)  # ADD Filler
                 depth[q] = depth[q] + 1
 
-            q = p.qubits[len(p.qubits) - 1]
+            q = interm_gate.qubits[len(interm_gate.qubits) - 1]
 
             # Create gate:
-            if p.name in conv.Gates_list.keys():
-                gate = conv.Gates_list[p.name]
+            if interm_gate.name in conv.Gates_list.keys():
+                gate = conv.Gates_list[interm_gate.name]
             else:
-                gate = conv._get_odyssey_gate(name=p.name, matrix=p.matrice)
+                gate = conv._get_odyssey_gate(name=interm_gate.name, matrix=interm_gate.matrice)
             qo_circuit[depth[q]][q] = _fill_slot(gate, visib=True)  # ADD Gate
             depth[q] = depth[q] + 1
 
