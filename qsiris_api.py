@@ -25,7 +25,7 @@ def execute_qiskit(res):
     qc = odyssey_to_qiskit(res,
                            incl_initial_state = False,
                            use_barrier = True,
-                           add_measurements = True)
+                           incl_all_measurements = True)
 
     backend = Aer.get_backend("qasm_simulator")
     result = execute(qc, backend=backend, shots=100).result()
@@ -39,13 +39,14 @@ def decompose_qiskit(res):
     qc = odyssey_to_qiskit(res,
                            incl_initial_state=False,
                            use_barrier=True,
-                           add_measurements=True)
+                           incl_all_measurements=True)
     try:
         qasm_circuit = qc.qasm()
     except:
         qasm_circuit = (
             "The matrix is not unitary."
-            " At the moment the error is probably caused by the fact that the numbers do not have enough decimals"
+            " At the moment the error is probably caused by the fact that "
+            "the numbers do not have enough decimals"
         )
 
     return qasm_circuit
@@ -60,7 +61,7 @@ def real_device_qiskit(res):
     qc = odyssey_to_qiskit(res,
                            incl_initial_state=False,
                            use_barrier=True,
-                           add_measurements=True)
+                           incl_all_measurements=True)
 
     try:
         qasm_circuit = qc.qasm()
@@ -72,7 +73,8 @@ def real_device_qiskit(res):
     except:
         qasm_circuit = (
             "The matrix is not unitary."
-            " At the moment the error is probably caused by the fact that the numbers do not have enough decimals"
+            " At the moment the error is probably caused by the fact that "
+            "the numbers do not have enough decimals"
         )
     result = {"ibmq_lima_counts": counts, "qasm_circuit": qasm_circuit}
     return result
