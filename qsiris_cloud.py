@@ -3,6 +3,7 @@ from flask import request
 from flask import jsonify
 from flask import make_response
 from flask import Flask
+from flask import render_template
 
 from qsiris_api import execute_qiskit, decompose_qiskit,real_device_qiskit
 
@@ -11,22 +12,28 @@ app = Flask(__name__)
 
 @app.route("/")
 def welcome():
-    return "Hello, I am Qsiris ..."
+    # return "Hello, I am Qsiris ..."
+    return render_template('test_server.html')
 
 
-@app.route("/QO_QK_convertor", methods=["POST"])
+@app.route("/QO_QK_convertor", methods=["POST", "GET"])
 def qo_qk():
 
     if request.is_json:
         req = request.get_json()
+
         s_counts = execute_qiskit(req)
         decompose = decompose_qiskit(req)
+
         result = {"simulated_counts": s_counts, "qasm_circuit": decompose}
 
         res = make_response(jsonify(result), 200)
+
+        print(res)
+
         return res
     else:
-        return "Not json fie", 400
+        return "Not json file", 400
 
 
 @app.route("/QO_QK_real", methods=["POST"])
