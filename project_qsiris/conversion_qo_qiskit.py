@@ -125,16 +125,22 @@ def add_odyssey_moment(puzzle_gate, qc):
                 + "]",
             )
 
-def odyssey_to_qiskit(path, incl_initial_state = False, use_barrier = False):
+
+def load_oddysey_puzzle(path):
+    file = open(path, "r")
+    content = file.read()
+    puzzle = json.loads(content)
+    return puzzle
+
+
+def odyssey_to_qiskit(puzzle, incl_initial_state = False,
+                      use_barrier = False,
+                      incl_all_measurements = False):
     """
     :param path: (puzzle) path to puzzle
     :param initial_state: (initial qubits state ) string of dictionaries
     :return: quantum circuit in qiskit equivalent with the circuit from puzzle
     """
-
-    file = open(path, "r")
-    content = file.read()
-    puzzle = json.loads(content)
 
     nr_q = get_odyssey_nr_qubits(puzzle)
     qc = QuantumCircuit(nr_q)
@@ -146,5 +152,9 @@ def odyssey_to_qiskit(path, incl_initial_state = False, use_barrier = False):
         if use_barrier:
             qc.barrier()
         add_odyssey_moment(puzzle_gate, qc)
+
+    if incl_all_measurements:
+        qubits = list(range(nr_q))
+        qc.measure(qubits, qubits[::-1])
 
     return qc

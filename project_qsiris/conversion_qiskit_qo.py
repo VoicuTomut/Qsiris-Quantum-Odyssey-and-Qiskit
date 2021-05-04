@@ -166,7 +166,7 @@ def odyssey_add_gate(puzzle, gate):
     puzzle["AvailableGates"].append(gate)
 
 
-def odyssey_save_puzzle(puzzle, name):
+def save_odyssey_puzzle(puzzle, name):
     """
     :param puzzle: (puzzle)dictionary
     :param name: (name)str

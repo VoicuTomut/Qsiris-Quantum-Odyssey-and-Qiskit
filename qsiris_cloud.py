@@ -1,9 +1,10 @@
+# Make sure flask is installed
 from flask import request
 from flask import jsonify
 from flask import make_response
 from flask import Flask
 
-from api import execute_qiskit, decompose_qiskit,real_device_qiskit
+from qsiris_api import execute_qiskit, decompose_qiskit,real_device_qiskit
 
 app = Flask(__name__)
 

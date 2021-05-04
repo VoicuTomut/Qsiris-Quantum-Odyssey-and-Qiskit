@@ -1,8 +1,9 @@
-from conversion_qo_qiskit import *
 from qiskit import Aer, execute
 from qiskit import QuantumCircuit
 from qiskit import IBMQ
 from qiskit.tools.monitor import job_monitor
+
+from project_qsiris.conversion_qo_qiskit import *
 
 def qiskit_test():
 
@@ -21,12 +22,11 @@ def qiskit_test():
 
 def execute_qiskit(res):
 
-    nr_q = get_nr_q(res)
-    qc = QuantumCircuit(nr_q)
+    qc = odyssey_to_qiskit(res,
+                           incl_initial_state = False,
+                           use_barrier = True,
+                           add_measurements = True)
 
-    add_gates(res, qc, barrier=True)
-
-    qc.measure_all()
     backend = Aer.get_backend("qasm_simulator")
     result = execute(qc, backend=backend, shots=100).result()
     counts = result.get_counts()
@@ -36,11 +36,10 @@ def execute_qiskit(res):
 
 def decompose_qiskit(res):
 
-    nr_q = get_nr_q(res)
-    qc = QuantumCircuit(nr_q)
-    add_gates(res, qc, barrier=True)
-    qc.measure_all()
-
+    qc = odyssey_to_qiskit(res,
+                           incl_initial_state=False,
+                           use_barrier=True,
+                           add_measurements=True)
     try:
         qasm_circuit = qc.qasm()
     except:
@@ -58,10 +57,10 @@ def real_device_qiskit(res):
     provider =IBMQ.get_provider('ibm-q')
     ibmq_lima=provider.get_backend("ibmq_lima")
 
-    nr_q = get_nr_q(res)
-    qc = QuantumCircuit(nr_q)
-    add_gates(res, qc, barrier=True)
-    qc.measure_all()
+    qc = odyssey_to_qiskit(res,
+                           incl_initial_state=False,
+                           use_barrier=True,
+                           add_measurements=True)
 
     try:
         qasm_circuit = qc.qasm()
