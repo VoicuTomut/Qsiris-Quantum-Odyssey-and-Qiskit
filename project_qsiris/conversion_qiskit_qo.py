@@ -1,6 +1,6 @@
 import json
 
-from .conversion_gates import *
+import project_qsiris.conversion_gates as conv
 
 
 class IntermediateGate:
@@ -56,7 +56,7 @@ def get_odyssey_circuit(qiskit_circuit):
     gate_depth = 7
     depth = [0 for i in range(nr_q)]
 
-    qo_circuit = [[fill_slot(I) for i in range(nr_q)] for j in range(gate_depth)]
+    qo_circuit = [[fill_slot(conv.I) for i in range(nr_q)] for j in range(gate_depth)]
 
     for qiskit_gate in qiskit_circuit.data:
         p = IntermediateGate(qiskit_gate)
@@ -70,10 +70,10 @@ def get_odyssey_circuit(qiskit_circuit):
                     depth[j] = moment
 
                 q_0 = p.qubits[0]
-                qo_circuit[depth[q_0]][q_0] = fill_slot(CT, visib=True)
+                qo_circuit[depth[q_0]][q_0] = fill_slot(conv.CT, visib=True)
 
                 q_1 = p.qubits[1]
-                qo_circuit[depth[q_1]][q_1] = fill_slot(X, visib=True)
+                qo_circuit[depth[q_1]][q_1] = fill_slot(conv.X, visib=True)
 
                 for j in range(nr_q):
                     depth[j] = depth[j] + 1
@@ -90,16 +90,16 @@ def get_odyssey_circuit(qiskit_circuit):
             for j in range(len(p.qubits) - 1):
                 q = p.qubits[j]
                 # Circuit[depth[q]][q]=p.name+'-F'
-                qo_circuit[depth[q]][q] = fill_slot(F, visib=True)  # ADD Filler
+                qo_circuit[depth[q]][q] = fill_slot(conv.F, visib=True)  # ADD Filler
                 depth[q] = depth[q] + 1
 
             q = p.qubits[len(p.qubits) - 1]
 
             # Create gate:
-            if p.name in Gates_list.keys():
-                gate = Gates_list[p.name]
+            if p.name in conv.Gates_list.keys():
+                gate = conv.Gates_list[p.name]
             else:
-                gate = _get_odyssey_gate(name=p.name, matrix=p.matrice)
+                gate = conv._get_odyssey_gate(name=p.name, matrix=p.matrice)
             qo_circuit[depth[q]][q] = fill_slot(gate, visib=True)  # ADD Gate
             depth[q] = depth[q] + 1
 
@@ -116,8 +116,8 @@ def generate_ball(nr_q):
      {'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0},
      {'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0}],
     """
-    ball = [[c0 for k in range(2 ** nr_q)] for ko in range(2 ** nr_q)]
-    ball[0][0] = c1
+    ball = [[conv.c0 for k in range(2 ** nr_q)] for ko in range(2 ** nr_q)]
+    ball[0][0] = conv.c1
     return ball
 
 
@@ -143,17 +143,17 @@ def circuit_to_puzzle(qiskit_circuit, gate_cap=7, puzzle_type="General"):
     puzzle["PuzzleDefinition"]["QubitCapacity"] = len(qiskit_circuit.qubits)
     puzzle["PuzzleDefinition"]["GateCapacity"] = gate_cap
     puzzle["PuzzleDefinition"]["Name"] = qiskit_circuit.name
-    puzzle["PuzzleDefinition"]["InitialState"] = _matrix_to_odyssey(initial_state)  #
-    puzzle["PuzzleDefinition"]["FinalState"] = _matrix_to_odyssey(initial_state)  #
+    puzzle["PuzzleDefinition"]["InitialState"] = conv._matrix_to_odyssey(initial_state)  #
+    puzzle["PuzzleDefinition"]["FinalState"] = conv._matrix_to_odyssey(initial_state)  #
     puzzle["PuzzleDefinition"]["FinalBallState"] = generate_ball(
         len(qiskit_circuit.qubits))  #
     puzzle["PuzzleDefinition"]["Difficulty"] = "Beginner"
     puzzle["PuzzleDefinition"]["PuzzleType"] = puzzle_type
     puzzle["PuzzleDefinition"]["Description"] = "SavePuzzlePanel(Clone)"
 
-    puzzle["PuzzleGates"] = _transpose_list(get_odyssey_circuit(qiskit_circuit))
+    puzzle["PuzzleGates"] = conv._transpose_list(get_odyssey_circuit(qiskit_circuit))
 
-    puzzle["AvailableGates"] = [H, Z, Y, X, CT]
+    puzzle["AvailableGates"] = [conv.H, conv.Z, conv.Y, conv.X, conv.CT]
 
     return puzzle
 
@@ -164,7 +164,7 @@ def change_init_state(puzzle, vec):
     :param vec: ([])np.array
     change initial state of puzzle
     """
-    puzzle["PuzzleDefinition"]["InitialState"] = _vector_to_odyssey(vec)
+    puzzle["PuzzleDefinition"]["InitialState"] = conv._vector_to_odyssey(vec)
 
 
 def change_final_state(puzzle, vec):
@@ -173,7 +173,7 @@ def change_final_state(puzzle, vec):
     :param vec: ([])np.array
     change final state of puzzle
     """
-    puzzle["PuzzleDefinition"]["FinalState"] = _vector_to_odyssey(vec)
+    puzzle["PuzzleDefinition"]["FinalState"] = conv._vector_to_odyssey(vec)
 
 
 def add_gate(puzzle, gate):
