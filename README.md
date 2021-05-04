@@ -38,18 +38,18 @@ incl. real hardware.
 -------------
     │
     ├── circuits                              < Colection of circuits       
-    │   ├── qiskit_to_odyssey                 < Qsiris saves files here               
+    │   ├── qiskit_to_odyssey                 < Qsiris save files here               
     │   └── odyssey_circuits                  < QO refence files
     │
     ├── project_qsiris                        <  The code
-    │   ├── conversion_qiskit_qo.py                      
-    │   └── conversion__qo_qiskit.py                                   
+    │   ├── conversion_gates.py                      
+    │   ├── conversion_intermediates.py
+    │   ├── conversion_qiskit_qo.py
+    │   └── conversion_qo_qiskit.py       
     │
+    ├── example.py                            < Run from console
     ├── example_odyssey_to_qiskit.ipynb       < QO to Qiskit examples 
-    │
     ├── example_qiskit_to_odyssey.ipynb       < Qiskit to Qo examples
-    │
     ├── README.md
-    │
     └── requirements.txt
 

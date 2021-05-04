@@ -7,7 +7,6 @@ from qiskit.visualization import plot_histogram
 from project_qsiris.conversion_qo_qiskit import odyssey_to_qiskit
 from project_qsiris.conversion_qiskit_qo import qiskit_to_odyssey, odyssey_save_puzzle
 
-
 """
     Odyssey to Qiskit
 """
