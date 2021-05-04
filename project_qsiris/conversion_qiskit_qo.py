@@ -20,7 +20,7 @@ class IntermediateGate:
         print("qubits:", self.qubits)
 
 
-def fill_slot(
+def _fill_slot(
         gate,
         visib=False,
         h_aux=False,
@@ -47,7 +47,7 @@ def fill_slot(
     return slot
 
 
-def get_odyssey_circuit(qiskit_circuit):
+def _get_odyssey_circuit(qiskit_circuit):
     """
     :param qiskit_circuit: qiskit circuit
     :return: odyssey circuit as a dictionary
@@ -56,7 +56,7 @@ def get_odyssey_circuit(qiskit_circuit):
     gate_depth = 7
 
     depth = [0 * nr_q]
-    qo_circuit = [[fill_slot(conv.I) * nr_q] * gate_depth]
+    qo_circuit = [[_fill_slot(conv.I) * nr_q] * gate_depth]
 
     for qiskit_gate in qiskit_circuit.data:
         p = IntermediateGate(qiskit_gate)
@@ -70,10 +70,10 @@ def get_odyssey_circuit(qiskit_circuit):
                     depth[j] = moment
 
                 q_0 = p.qubits[0]
-                qo_circuit[depth[q_0]][q_0] = fill_slot(conv.CT, visib=True)
+                qo_circuit[depth[q_0]][q_0] = _fill_slot(conv.CT, visib=True)
 
                 q_1 = p.qubits[1]
-                qo_circuit[depth[q_1]][q_1] = fill_slot(conv.X, visib=True)
+                qo_circuit[depth[q_1]][q_1] = _fill_slot(conv.X, visib=True)
 
                 for j in range(nr_q):
                     depth[j] = depth[j] + 1
@@ -90,7 +90,7 @@ def get_odyssey_circuit(qiskit_circuit):
             for j in range(len(p.qubits) - 1):
                 q = p.qubits[j]
                 # Circuit[depth[q]][q]=p.name+'-F'
-                qo_circuit[depth[q]][q] = fill_slot(conv.F, visib=True)  # ADD Filler
+                qo_circuit[depth[q]][q] = _fill_slot(conv.F, visib=True)  # ADD Filler
                 depth[q] = depth[q] + 1
 
             q = p.qubits[len(p.qubits) - 1]
@@ -100,13 +100,13 @@ def get_odyssey_circuit(qiskit_circuit):
                 gate = conv.Gates_list[p.name]
             else:
                 gate = conv._get_odyssey_gate(name=p.name, matrix=p.matrice)
-            qo_circuit[depth[q]][q] = fill_slot(gate, visib=True)  # ADD Gate
+            qo_circuit[depth[q]][q] = _fill_slot(gate, visib=True)  # ADD Gate
             depth[q] = depth[q] + 1
 
     return qo_circuit
 
 
-def generate_ball(nr_q):
+def _generate_ball(nr_q):
     """
      :param nr_q: (number of qubits) int
      :return: vector of dictionaries that represent ball states:
@@ -121,7 +121,7 @@ def generate_ball(nr_q):
     return ball
 
 
-def qiskit_circuit_to_odyssey_puzzle(qiskit_circuit, gate_cap=7, puzzle_type="General"):
+def qiskit_to_odyssey(qiskit_circuit, gate_cap=7, puzzle_type="General"):
     """
     :param qiskit_circuit: qiskit circuit
     :param gate_cap: (depth of the circuit in odyssey)int
@@ -145,19 +145,19 @@ def qiskit_circuit_to_odyssey_puzzle(qiskit_circuit, gate_cap=7, puzzle_type="Ge
     puzzle["PuzzleDefinition"]["Name"] = qiskit_circuit.name
     puzzle["PuzzleDefinition"]["InitialState"] = conv._matrix_to_odyssey(initial_state)  #
     puzzle["PuzzleDefinition"]["FinalState"] = conv._matrix_to_odyssey(initial_state)  #
-    puzzle["PuzzleDefinition"]["FinalBallState"] = generate_ball(
+    puzzle["PuzzleDefinition"]["FinalBallState"] = _generate_ball(
         len(qiskit_circuit.qubits))  #
     puzzle["PuzzleDefinition"]["Difficulty"] = "Beginner"
     puzzle["PuzzleDefinition"]["PuzzleType"] = puzzle_type
     puzzle["PuzzleDefinition"]["Description"] = "SavePuzzlePanel(Clone)"
 
-    puzzle["PuzzleGates"] = conv._transpose_list(get_odyssey_circuit(qiskit_circuit))
+    puzzle["PuzzleGates"] = conv._transpose_list(_get_odyssey_circuit(qiskit_circuit))
     puzzle["AvailableGates"] = [conv.H, conv.Z, conv.Y, conv.X, conv.CT]
 
     return puzzle
 
 
-def change_init_state(puzzle, vec):
+def odyssey_change_init_state(puzzle, vec):
     """
     :param puzzle: (puzzle)
     :param vec: ([])np.array
@@ -166,7 +166,7 @@ def change_init_state(puzzle, vec):
     puzzle["PuzzleDefinition"]["InitialState"] = conv._vector_to_odyssey(vec)
 
 
-def change_final_state(puzzle, vec):
+def odyssey_change_final_state(puzzle, vec):
     """
     :param puzzle: (puzzle)
     :param vec: ([])np.array
@@ -175,14 +175,14 @@ def change_final_state(puzzle, vec):
     puzzle["PuzzleDefinition"]["FinalState"] = conv._vector_to_odyssey(vec)
 
 
-def add_gate(puzzle, gate):
+def odyssey_add_gate(puzzle, gate):
     """
     Add gate to a puzzle as "AvailableGates"
     """
     puzzle["AvailableGates"].append(gate)
 
 
-def save_puzzle(puzzle, name):
+def odyssey_save_puzzle(puzzle, name):
     """
     :param puzzle: (puzzle)dictionary
     :param name: (name)str

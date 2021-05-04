@@ -2,11 +2,10 @@ import numpy as np
 
 from qiskit import QuantumRegister, QuantumCircuit
 from qiskit import Aer, execute
-
 from qiskit.visualization import plot_histogram
 
-from project_qsiris.conversion_qo_qiskit import odyssey_puzzle_to_qiskit_circuit, add_gates, odyssey_get_nr_q
-from project_qsiris.conversion_qiskit_qo import qiskit_circuit_to_odyssey_puzzle, save_puzzle
+from project_qsiris.conversion_qo_qiskit import odyssey_to_qiskit, _add_gates, odyssey_get_nr_q
+from project_qsiris.conversion_qiskit_qo import qiskit_to_odyssey, odyssey_save_puzzle
 
 
 """
@@ -14,7 +13,7 @@ from project_qsiris.conversion_qiskit_qo import qiskit_circuit_to_odyssey_puzzle
 """
 path = "circuits/qiskit_to_odyssey/example_002.qpf"
 
-qc = odyssey_puzzle_to_qiskit_circuit(path, initial_state=False)
+qc = odyssey_to_qiskit(path, initial_state=False)
 qc.measure_all()
 # qc.draw('mpl')
 
@@ -40,5 +39,5 @@ circuit.u(np.pi/7, np.pi/3, np.pi/5, qreg_q[0])
 
 # circuit.draw('mpl')
 
-puzzle = qiskit_circuit_to_odyssey_puzzle(circuit, puzzle_type="General")
-save_puzzle(puzzle, 'example_001' )
+puzzle = qiskit_to_odyssey(circuit, puzzle_type="General")
+odyssey_save_puzzle(puzzle, 'example_001')

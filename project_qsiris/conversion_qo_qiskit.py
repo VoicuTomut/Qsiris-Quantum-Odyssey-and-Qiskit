@@ -126,7 +126,7 @@ def mat_gate(mat, name):
     return custom_gate
 
 
-def add_moment(puzzle_gate, qc):
+def _add_moment(puzzle_gate, qc):
     """
     :param puzzle_gate: string of gates
     :param qc: QuantumCircuit qiskit
@@ -209,9 +209,9 @@ def add_moment(puzzle_gate, qc):
                 )
 
 
-def add_gates(res, qc, barrier=True):
+def _add_gates(res, qc, barrier=True):
     """
-    :param res: (puzzle)dictionary
+    :param res: (puzzle) dictionary
     :param qc: Qiskit Circuit
     Add gate fro puzzle to qiskit circuit
     """
@@ -223,10 +223,10 @@ def add_gates(res, qc, barrier=True):
         if barrier:
             qc.barrier()
 
-        add_moment(puzzle_gate, qc)
+        _add_moment(puzzle_gate, qc)
 
 
-def odyssey_puzzle_to_qiskit_circuit(path, initial_state=False):
+def odyssey_to_qiskit(path, initial_state=False):
     """
     :param path: (puzzle) path to puzzle
     :param initial_state: (initial qubits state ) string of dictionaries
@@ -243,6 +243,6 @@ def odyssey_puzzle_to_qiskit_circuit(path, initial_state=False):
     if initial_state != False:
         qc.initialize(initial_state)
 
-    add_gates(puzzle, qc, barrier=True)
+    _add_gates(puzzle, qc, barrier=True)
 
     return qc
