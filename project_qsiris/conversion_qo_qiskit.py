@@ -103,7 +103,7 @@ def transpose_list(A):
     return B
 
 
-class Moment:
+class OdysseyMoment:
     def __init__(self, original_form):
         self.original_form = original_form
         self.nr_q = len(self.original_form)
@@ -116,6 +116,7 @@ class Moment:
             gate_name = self.original_form[j]["GateInSlot"]["Name"]
             if gate_name == "CTRL":
                 cq.append(j)
+
         return cq
 
     def get_filler_q(self):
@@ -141,47 +142,52 @@ def mat_gate(mat, name):
     return custom_gate
 
 
-def add_moment(moment, qc):
+def add_moment(puzzle_gate, qc):
     """
-    :param moment: string of gates
+    :param puzzle_gate: string of gates
     :param qc: QuantumCircuit qiskit
-    Add gates from monent to the  qiskit circuit
+    Add gates from moment to the  qiskit circuit
     """
+
+    moment = OdysseyMoment(puzzle_gate)
+
     if len(moment.control_q) == 0:
-        for i in range(moment.nr_q):
-            if moment.original_form[i]["GateInSlot"]["Name"] == "X":
-                qc.x(i)
-            elif moment.original_form[i]["GateInSlot"]["Name"] == "Y":
-                qc.y(i)
-            elif moment.original_form[i]["GateInSlot"]["Name"] == "Z":
-                qc.z(i)
-            elif moment.original_form[i]["GateInSlot"]["Name"] == "H":
-                qc.h(i)
-            elif moment.original_form[i]["GateInSlot"]["Name"] == "I":
-                qc.id(i)
-            elif moment.original_form[i]["GateInSlot"]["Name"] == "Filler":
+        for qubit in range(moment.nr_q):
+
+            gate_name = moment.original_form[qubit]["GateInSlot"]["Name"]
+            if gate_name == "X":
+                qc.x(qubit)
+            elif gate_name == "Y":
+                qc.y(qubit)
+            elif gate_name == "Z":
+                qc.z(qubit)
+            elif gate_name == "H":
+                qc.h(qubit)
+            elif gate_name == "I":
+                qc.id(qubit)
+            elif gate_name == "Filler":
                 print(
                     "The fillers are empty gates so they will not be converted to qiskit",
-                    i,
+                    qubit,
                 )
             else:
                 unit = get_mat(
-                    moment.original_form[i]["GateInSlot"]["DefinitionMatrix"]
+                    moment.original_form[qubit]["GateInSlot"]["DefinitionMatrix"]
                 )
                 qubits = [k for k in moment.filler_q]
-                qubits.append(i)
-                qc.unitary(unit, qubits, moment.original_form[i]["GateInSlot"]["Name"])
+                qubits.append(qubit)
+                qc.unitary(unit, qubits, moment.original_form[qubit]["GateInSlot"]["Name"])
                 if len(moment.filler_q) > 0:
                     print(
-                        "This gate {} is not necessarily converted correctly. The order of the qubits maybe reversed Please check! ".format(
-                            moment.original_form[i]["GateInSlot"]["Name"]
+                        "This gate {} is not necessarily converted correctly."
+                        " The order of the qubits maybe reversed Please check! ".format(
+                            gate_name
                         )
                     )
 
     if len(moment.control_q) != 0:
         moment_mat = get_mat(moment.original_form[0]["GateInSlot"]["DefinitionMatrix"])
         for i in range(moment.nr_q):
-            # as putea sa scot sii identitatiile daca vrei
             if (
                 (moment.original_form[i]["GateInSlot"]["Name"] != "CTRL")
                 and (moment.original_form[i]["GateInSlot"]["Name"] != "I")
@@ -226,13 +232,14 @@ def add_gates(res, qc, barrier=True):
     Add gate fro puzzle to qiskit circuit
     """
     mo = 0
-    for i in transpose_list(res["PuzzleGates"]):
+    for puzzle_gate in transpose_list(res["PuzzleGates"]):
         mo = mo + 1
-        nr_gates_moment = len(i)
-        momnet_i = Moment(i)
+        nr_gates_moment = len(puzzle_gate)
+
         if barrier:
             qc.barrier()
-        add_moment(momnet_i, qc)
+
+        add_moment(puzzle_gate, qc)
 
 
 def puzzle_to_circuit(path, initial_state=False):

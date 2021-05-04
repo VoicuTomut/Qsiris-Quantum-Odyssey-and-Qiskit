@@ -62,8 +62,8 @@ def _transpose_list(A):
 
     return B
 
-def _get_gate(name, matrix, i_d=9, t=8,
-              icon_path="Artwork/GatesIcons/CustomGate"):
+def _get_odyssey_gate(name, matrix, i_d=9, t=8,
+                      icon_path="Artwork/GatesIcons/CustomGate"):
     """
     :param name: (name of the gate) str
     :param matrix: (unitary matrix)np.array
@@ -93,7 +93,7 @@ def _get_gate(name, matrix, i_d=9, t=8,
     return gate
 
 
-I = _get_gate(
+I = _get_odyssey_gate(
     name="I",
     matrix=[[1.0, 0.0], [0.0, 1.0]],
     i_d=5,
@@ -101,7 +101,7 @@ I = _get_gate(
     icon_path="Artwork/GatesIcons/IGate",
 )
 
-X = _get_gate(
+X = _get_odyssey_gate(
     name="X",
     matrix=[[0.0, 1.0], [1.0, 0.0]],
     i_d=3,
@@ -109,7 +109,7 @@ X = _get_gate(
     icon_path="Artwork/GatesIcons/XGate",
 )
 
-Y = _get_gate(
+Y = _get_odyssey_gate(
     name="Y",
     matrix=[[0.0, 0.0 - 1j], [0.0 + 1j, 0.0]],
     i_d=2,
@@ -117,7 +117,7 @@ Y = _get_gate(
     icon_path="Artwork/GatesIcons/YGate",
 )
 
-Z = _get_gate(
+Z = _get_odyssey_gate(
     name="Z",
     matrix=[[1.0, 0.0], [0.0, -1.0]],
     i_d=1,
@@ -125,7 +125,7 @@ Z = _get_gate(
     icon_path="Artwork/GatesIcons/ZGate",
 )
 
-F = _get_gate(
+F = _get_odyssey_gate(
     name="Filler",
     matrix=[[1.0, 0.0], [0.0, 1.0]],
     i_d=1010,
@@ -133,7 +133,7 @@ F = _get_gate(
     icon_path="Artwork/GatesIcons/FillerGate",
 )
 
-CT = _get_gate(
+CT = _get_odyssey_gate(
     name="CTRL",
     matrix=[[0.0, 0.0], [0.0, 1.0]],
     i_d=5,
@@ -141,7 +141,7 @@ CT = _get_gate(
     icon_path="Artwork/GatesIcons/CTRLGate",
 )
 
-H = _get_gate(
+H = _get_odyssey_gate(
     name="H",
     matrix=[[1 / np.sqrt(2), 1 / np.sqrt(2)],
             [1 / np.sqrt(2), -1 / np.sqrt(2)]],

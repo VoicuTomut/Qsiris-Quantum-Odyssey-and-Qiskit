@@ -99,7 +99,7 @@ def get_odyssey_circuit(qiskit_circuit):
             if p.name in Gates_list.keys():
                 gate = Gates_list[p.name]
             else:
-                gate = _get_gate(name=p.name, matrix=p.matrice)
+                gate = _get_odyssey_gate(name=p.name, matrix=p.matrice)
             qo_circuit[depth[q]][q] = fill_slot(gate, visib=True)  # ADD Gate
             depth[q] = depth[q] + 1
 
