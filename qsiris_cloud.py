@@ -38,7 +38,7 @@ def qo_qk():
 
     res = make_response(jsonify(result), 200)
 
-    print(res)
+    #print(res)
     return res
 
 
