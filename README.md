@@ -28,7 +28,7 @@ find ways to optimize your algorithm!
 
 ## *Server* branch 
  
-With the server you can use Quantum Odyssey puzzles inside of other python Qiskit projects or execute QO puzzle files on an IBM machine without having QO installed. At the click of a button, the QO puzzle is converted to a qiskit circuit and simulated. If the user wants to run on real hardware he just needs to add his token and change the path in test_server.html  from "http://0.0.0.0:5000/QO_QK_convertor" to  "http://0.0.0.0:5000//QO_QK_real".
+With the server you can use Quantum Odyssey puzzles inside of other python Qiskit projects or execute QO puzzle files on an IBM machine without having QO installed. At the click of a button, the QO puzzle is converted to a qiskit circuit and simulated. If the user wants to run on real hardware he just needs to add his token and change the path in test_server.html from "http://0.0.0.0:5000/QO_QK_convertor" to "http://0.0.0.0:5000//QO_QK_real".
 
 ### Steps to use server: 
 1. pip install -r requirements_server.txt

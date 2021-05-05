@@ -39,7 +39,7 @@ def qo_qk():
     res = make_response(jsonify(result), 200)
 
     #print(res)
-    return res
+    return flask.jsonify(res)
 
 
 
