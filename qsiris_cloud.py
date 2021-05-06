@@ -13,7 +13,6 @@ from qsiris_api import execute_qiskit, decompose_qiskit,real_device_qiskit
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def welcome():
     return render_template('test_server.html')
@@ -51,7 +50,7 @@ def qo_qk():
     try:
         #puz = json.load(file)
         #print(puz, file=sys.stderr)
-        puz=data
+        puz = data
     except:
         return "Not json file", 400
 

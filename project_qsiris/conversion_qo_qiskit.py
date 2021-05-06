@@ -58,7 +58,7 @@ def add_odyssey_moment(puzzle_gate, qc,qiskit_circuit):
                 qc.x(qubit)
                 ########################################################
                 qiskit_circuit=qiskit_circuit+'qc.x({}) \n'.format(str(qubit))
-               ########################################################
+                ########################################################
             elif gate_name == "Y":
                 qc.y(qubit)
                 ########################################################
@@ -177,13 +177,10 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
     """
 
     nr_q = get_odyssey_nr_qubits(puzzle)
-    
-    
     qc = QuantumCircuit(QuantumRegister(nr_q), ClassicalRegister(nr_q))
     
     ########################################################
-    # import 
-    qiskit_circuit=qiskit_circuit+'import numpy as np \n'
+    qiskit_circuit='import numpy as np \n'
     qiskit_circuit=qiskit_circuit+'from qiskit import QuantumCircuit,QuantumRegister,ClassicalRegister \n \n'
    
     # initializae circuit:
@@ -209,4 +206,5 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
             qiskit_circuit=qiskit_circuit+'qc.measure(qc.qregs[0][{}], qc.cregs[0][{}]) \n'.format(index,str(nr_q - 1 - index))
             ########################################################
     #print(qiskit_circuit)
+
     return qc , qiskit_circuit
