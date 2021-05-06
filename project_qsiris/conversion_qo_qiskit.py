@@ -115,7 +115,7 @@ def add_odyssey_moment(puzzle_gate, qc):
 
             qc.unitary(
                 unit,
-                qubits,
+                qubits[::-1],
                 "C "
                 + str(moment.control_q)
                 + " -> "
