@@ -112,17 +112,18 @@ def add_odyssey_moment(puzzle_gate, qc):
             for k in range(1, len(mat) + 1):
                 for j in range(1, len(mat) + 1):
                     unit[-k][-j] = mat[-k][-j]
-
+            print(unit)
+            print("control:",moment.control_q)
+            print("qubits:",qubits[::-1])
+            mc='_'
+            for l in moment.control_q:
+                mc=mc+str(l)+'_'
+            name="c"+ mc+ moment.original_form[i]["GateInSlot"]["Name"]+ "_"+ str(i)+ "_"
+            print(name)
             qc.unitary(
                 unit,
-                qubits,
-                "C "
-                + str(moment.control_q)
-                + " -> "
-                + moment.original_form[i]["GateInSlot"]["Name"]
-                + "["
-                + str(i)
-                + "]",
+                qubits[::-1],
+                name.lower(),
             )
 
 
