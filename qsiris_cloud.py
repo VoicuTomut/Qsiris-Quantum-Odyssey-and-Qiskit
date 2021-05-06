@@ -32,14 +32,16 @@ def qo_qk():
         return "Not json file", 400
 
     s_counts = execute_qiskit(puz)
-    decompose = decompose_qiskit(puz)
+    qasm_circuit,qiskit_circuit = decompose_qiskit(puz)
 
-    result = {"simulated_counts": s_counts, "qasm_circuit": decompose}
-
+    result = {"simulated_counts": s_counts, "qasm_circuit": qasm_circuit, "qiskit_circuit":qiskit_circuit,}
+    #print('\n \n ##################')
+    #print(result)
+    #print('\n \n ##################')
     res = make_response(jsonify(result), 200)
 
     #print(res)
-    return flask.jsonify(res)
+    return res
 
 
 

@@ -215,5 +215,5 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
             qiskit_circuit=qiskit_circuit+'qc.measure(qc.qregs[0][{}], qc.cregs[0][{}]) \n'.format(index,str(nr_q - 1 - index))
             
             #######################################
-    print(qiskit_circuit)
+    #print(qiskit_circuit)
     return qc , qiskit_circuit

@@ -2,6 +2,7 @@ from qiskit import Aer, execute
 from qiskit import QuantumCircuit
 from qiskit import IBMQ
 from qiskit.tools.monitor import job_monitor
+import flask
 
 from project_qsiris.conversion_qo_qiskit import *
 
@@ -20,9 +21,10 @@ def qiskit_test():
     return counts
 
 
+
 def execute_qiskit(res):
 
-    qc = odyssey_to_qiskit(res,
+    qc,qiskit_circuit = odyssey_to_qiskit(res,
                            incl_initial_state = False,
                            use_barrier = True,
                            incl_all_measurements = True)
@@ -36,7 +38,7 @@ def execute_qiskit(res):
 
 def decompose_qiskit(res):
 
-    qc = odyssey_to_qiskit(res,
+    qc,qiskit_circuit = odyssey_to_qiskit(res,
                            incl_initial_state=False,
                            use_barrier=True,
                            incl_all_measurements=True)
@@ -49,7 +51,7 @@ def decompose_qiskit(res):
             "the numbers do not have enough decimals"
         )
 
-    return qasm_circuit
+    return qasm_circuit,qiskit_circuit
 
 
 def real_device_qiskit(res):
@@ -58,7 +60,7 @@ def real_device_qiskit(res):
     provider = IBMQ.get_provider('ibm-q')
     ibmq_lima = provider.get_backend("ibmq_lima")
 
-    qc = odyssey_to_qiskit(res,
+    qc,qiskit_circuit = odyssey_to_qiskit(res,
                            incl_initial_state=False,
                            use_barrier=True,
                            incl_all_measurements=True)
