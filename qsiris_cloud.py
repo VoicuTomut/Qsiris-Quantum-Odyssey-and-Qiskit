@@ -18,50 +18,43 @@ def welcome():
     return render_template('test_server.html')
 
 
-@app.route("/QO_QK_convertor_w", methods=["POST"])
-def qo_qk_w():
-
-    # data = json.loads(request.form.get('jsonfile'))
-    file = request.files['jsonfile']
-    puz = None
-    try:
-        puz = json.load(file)
-        print(puz, file=sys.stderr)
-    except:
-        return "Not json file", 400
-
-    s_counts = execute_qiskit(puz)
-    decompose = decompose_qiskit(puz)
-
-    result = {"simulated_counts": s_counts, "qasm_circuit": decompose}
-
-    res = make_response(jsonify(result), 200)
-
-    #print(res)
-    return res
-
 
 @app.route("/QO_QK_convertor", methods=["POST"])
 def qo_qk():
-
-    data = request.get_json()
-    #file = request.files['jsonfile']
-    puz = None
     try:
-        #puz = json.load(file)
-        #print(puz, file=sys.stderr)
-        puz = data
+        data = request.get_json()
+        #file = request.files['jsonfile']
+        puz = None
+        try:
+            #puz = json.load(file)
+            #print(puz, file=sys.stderr)
+            puz = data
+        except:
+            return "Not json file", 400
+
+        s_counts = execute_qiskit(puz)
+        qasm_circuit,qiskit_circuit = decompose_qiskit(puz)
+
+        result = {"simulated_counts": s_counts, "qasm_circuit": qasm_circuit, "qiskit_circuit":qiskit_circuit,}
+        #print('\n \n ##################')
+        #print(result)
+        #print('\n \n ##################')
+        res = make_response(jsonify(result), 200)
     except:
-        return "Not json file", 400
+        file = request.files['jsonfile']
+        puz = None
+        try:
+            puz = json.load(file)
+            print(puz, file=sys.stderr)
+        except:
+            return "Not json file", 400
 
-    s_counts = execute_qiskit(puz)
-    qasm_circuit,qiskit_circuit = decompose_qiskit(puz)
+        s_counts = execute_qiskit(puz)
+        decompose = decompose_qiskit(puz)
 
-    result = {"simulated_counts": s_counts, "qasm_circuit": qasm_circuit, "qiskit_circuit":qiskit_circuit,}
-    #print('\n \n ##################')
-    #print(result)
-    #print('\n \n ##################')
-    res = make_response(jsonify(result), 200)
+        result = {"simulated_counts": s_counts, "qasm_circuit": decompose}
+
+        res = make_response(jsonify(result), 200)
 
     #print(res)
     return res
