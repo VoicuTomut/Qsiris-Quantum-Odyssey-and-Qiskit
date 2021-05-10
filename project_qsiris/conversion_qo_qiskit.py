@@ -181,6 +181,7 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
     
     ########################################################
     qiskit_circuit='import numpy as np \n'
+    qiskit_circuit=qiskit_circuit+'from numpy import array\n'
     qiskit_circuit=qiskit_circuit+'from qiskit import QuantumCircuit,QuantumRegister,ClassicalRegister \n \n'
    
     # initializae circuit:
