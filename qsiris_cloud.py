@@ -32,6 +32,11 @@ def qo_qk():
         except:
             return "Not json file", 400
 
+        if int(puz["QiskitShotsUsed"])>1000:
+            print("QiskitShotsUsed:",puz["QiskitShotsUsed"])
+            return "Maximim nr of QiskitShotsUsed >1000 !", 400
+            
+
         s_counts = execute_qiskit(puz)
         qasm_circuit,qiskit_circuit = decompose_qiskit(puz)
 
@@ -49,7 +54,8 @@ def qo_qk():
         except:
             return "Not json file", 400
 
-        s_counts = execute_qiskit(puz)
+
+
         decompose = decompose_qiskit(puz)
 
         result = {"simulated_counts": s_counts, "qasm_circuit": decompose}
