@@ -34,7 +34,7 @@ def qo_qk():
 
         if int(puz["QiskitShotsUsed"])>1000:
             print("QiskitShotsUsed:",puz["QiskitShotsUsed"])
-            return "Maximim nr of QiskitShotsUsed >1000 !", 400
+            return "Maximum nr of QiskitShotsUsed >1000 !", 400
             
 
         s_counts = execute_qiskit(puz)
