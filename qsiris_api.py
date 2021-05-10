@@ -30,7 +30,7 @@ def execute_qiskit(res):
                            incl_all_measurements = True)
 
     backend = Aer.get_backend("qasm_simulator")
-    result = execute(qc, backend=backend, shots=100).result()
+    result = execute(qc, backend=backend, shots=int(res["QiskitShotsUsed"])).result()
     counts = result.get_counts()
 
     return counts
