@@ -63,7 +63,12 @@ def add_odyssey_moment(puzzle_gate, qc,qiskit_circuit):
                 qc.y(qubit)
                 ########################################################
                 qiskit_circuit=qiskit_circuit+'qc.y({}) \n'.format(str(qubit))
-                ########################################################              
+                ########################################################    
+            elif gate_name == "S":
+                qc.s(qubit)
+                ########################################################
+                qiskit_circuit=qiskit_circuit+'qc.s({}) \n'.format(str(qubit))
+                ########################################################  
             elif gate_name == "Z":
                 qc.z(qubit)
                 ########################################################

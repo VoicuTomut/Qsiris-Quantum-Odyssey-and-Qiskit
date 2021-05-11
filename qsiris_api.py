@@ -43,6 +43,7 @@ def decompose_qiskit(res):
                            use_barrier=True,
                            incl_all_measurements=True)
     try:
+        print("QASM PROBLEM ")
         qasm_circuit = qc.qasm()
     except:
         qasm_circuit = (
