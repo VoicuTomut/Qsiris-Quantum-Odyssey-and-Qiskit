@@ -11,6 +11,7 @@ def get_odyssey_nr_qubits(res):
     :param res: (puzzle)dictionary
     :return: (number of qubits from puzzle)int
     """
+    print(res)
     nr_q = res["PuzzleDefinition"]["QubitCapacity"]
     return nr_q
 
@@ -143,7 +144,7 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
     """
 
     nr_q = get_odyssey_nr_qubits(puzzle)
-    qc = QuantumCircuit(QuantumRegister(nr_q), ClassicalRegister(nr_q))
+    qc = QuantumCircuit(QuantumRegister(nr_q))
 
     if incl_initial_state != False:
         qc.initialize(incl_initial_state)
