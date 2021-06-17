@@ -1,0 +1,521 @@
+{
+  "PuzzleDefinition": {
+    "ModuleID": "generic",
+    "ID": 0,
+    "QubitCapacity": 2,
+    "GateCapacity": 3,
+    "Name": "xy",
+    "InitialState": [
+      [
+        {
+          "Real": 1.0,
+          "Imaginary": 0.0,
+          "Magnitude": 1.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ]
+    ],
+    "FinalState": [
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 1.0,
+          "Magnitude": 1.0,
+          "Phase": 1.5707963267948966
+        }
+      ]
+    ],
+    "FinalBallState": [
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 1.0,
+          "Magnitude": 1.0,
+          "Phase": 1.5707963267948966
+        }
+      ]
+    ],
+    "Difficulty": "Beginner",
+    "PuzzleType": "Editor",
+    "Description": "SavePuzzlePanel(Clone)"
+  },
+  "PuzzleGates": [
+    [
+      {
+        "IsGateVisible": false,
+        "HasAuxGate": false,
+        "GateInSlot": {
+          "ID": 3,
+          "Name": "X",
+          "Type": 3,
+          "IconPath": "Artwork/GatesIcons/XGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              }
+            ],
+            [
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              }
+            ]
+          ]
+        },
+        "AuxGateInSlot": null
+      },
+      {
+        "IsGateVisible": false,
+        "HasAuxGate": false,
+        "GateInSlot": {
+          "ID": 5,
+          "Name": "I",
+          "Type": 0,
+          "IconPath": "Artwork/GatesIcons/IGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              }
+            ],
+            [
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              }
+            ]
+          ]
+        },
+        "AuxGateInSlot": null
+      },
+      {
+        "IsGateVisible": false,
+        "HasAuxGate": false,
+        "GateInSlot": {
+          "ID": 5,
+          "Name": "I",
+          "Type": 0,
+          "IconPath": "Artwork/GatesIcons/IGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              }
+            ],
+            [
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              }
+            ]
+          ]
+        },
+        "AuxGateInSlot": null
+      }
+    ],
+    [
+      {
+        "IsGateVisible": false,
+        "HasAuxGate": false,
+        "GateInSlot": {
+          "ID": 5,
+          "Name": "I",
+          "Type": 0,
+          "IconPath": "Artwork/GatesIcons/IGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              }
+            ],
+            [
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              }
+            ]
+          ]
+        },
+        "AuxGateInSlot": null
+      },
+      {
+        "IsGateVisible": false,
+        "HasAuxGate": false,
+        "GateInSlot": {
+          "ID": 2,
+          "Name": "Y",
+          "Type": 5,
+          "IconPath": "Artwork/GatesIcons/YGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 0.0,
+                "Imaginary": -1.0,
+                "Magnitude": 1.0,
+                "Phase": -1.5707963267948966
+              }
+            ],
+            [
+              {
+                "Real": 0.0,
+                "Imaginary": 1.0,
+                "Magnitude": 1.0,
+                "Phase": 1.5707963267948966
+              },
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              }
+            ]
+          ]
+        },
+        "AuxGateInSlot": null
+      },
+      {
+        "IsGateVisible": false,
+        "HasAuxGate": false,
+        "GateInSlot": {
+          "ID": 5,
+          "Name": "I",
+          "Type": 0,
+          "IconPath": "Artwork/GatesIcons/IGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              }
+            ],
+            [
+              {
+                "Real": 0.0,
+                "Imaginary": 0.0,
+                "Magnitude": 0.0,
+                "Phase": 0.0
+              },
+              {
+                "Real": 1.0,
+                "Imaginary": 0.0,
+                "Magnitude": 1.0,
+                "Phase": 0.0
+              }
+            ]
+          ]
+        },
+        "AuxGateInSlot": null
+      }
+    ]
+  ],
+  "AvailableGates": [
+    {
+      "ID": 2,
+      "Name": "Y",
+      "Type": 5,
+      "IconPath": "Artwork/GatesIcons/YGate",
+      "CompatibleQubits": 1,
+      "DefinitionMatrix": [
+        [
+          {
+            "Real": 0.0,
+            "Imaginary": 0.0,
+            "Magnitude": 0.0,
+            "Phase": 0.0
+          },
+          {
+            "Real": 0.0,
+            "Imaginary": -1.0,
+            "Magnitude": 1.0,
+            "Phase": -1.5707963267948966
+          }
+        ],
+        [
+          {
+            "Real": 0.0,
+            "Imaginary": 1.0,
+            "Magnitude": 1.0,
+            "Phase": 1.5707963267948966
+          },
+          {
+            "Real": 0.0,
+            "Imaginary": 0.0,
+            "Magnitude": 0.0,
+            "Phase": 0.0
+          }
+        ]
+      ]
+    },
+    {
+      "ID": 3,
+      "Name": "X",
+      "Type": 3,
+      "IconPath": "Artwork/GatesIcons/XGate",
+      "CompatibleQubits": 1,
+      "DefinitionMatrix": [
+        [
+          {
+            "Real": 0.0,
+            "Imaginary": 0.0,
+            "Magnitude": 0.0,
+            "Phase": 0.0
+          },
+          {
+            "Real": 1.0,
+            "Imaginary": 0.0,
+            "Magnitude": 1.0,
+            "Phase": 0.0
+          }
+        ],
+        [
+          {
+            "Real": 1.0,
+            "Imaginary": 0.0,
+            "Magnitude": 1.0,
+            "Phase": 0.0
+          },
+          {
+            "Real": 0.0,
+            "Imaginary": 0.0,
+            "Magnitude": 0.0,
+            "Phase": 0.0
+          }
+        ]
+      ]
+    }
+  ],
+  "Tooltips": []
+}

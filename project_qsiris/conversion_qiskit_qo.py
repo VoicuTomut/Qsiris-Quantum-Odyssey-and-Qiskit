@@ -118,8 +118,8 @@ def qiskit_to_odyssey(qiskit_circuit, gate_cap=7, puzzle_type="General"):
     puzzle["AvailableGates"] = ""
     puzzle["Tooltips"] = []
 
-    initial_state = [[0] * (2 ** len(qiskit_circuit.qubits))]
-    initial_state[0][0] = 1
+    initial_state = [[0] for t in range(2 ** len(qiskit_circuit.qubits))]
+    initial_state[0][0]= 1
 
     puzzle["PuzzleDefinition"] = {}
     puzzle["PuzzleDefinition"]["ModuleID"] = "Qiskit"
