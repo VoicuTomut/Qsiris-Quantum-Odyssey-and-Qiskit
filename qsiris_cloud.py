@@ -41,7 +41,17 @@ def qo_qk():
     print(res)
     return res
 
+@app.route("/QK_QO_convertor", methods=["POST"])
+def qk_qo():
 
+    # data = json.loads(request.form.get('jsonfile'))
+    file = request.files['jsonfile']
+    puz = None
+
+    res = qiskit_extraction(qiskit_file)
+
+    print(res)
+    return res
 
 @app.route("/QO_QK_real", methods=["POST"])
 def qk_real():

@@ -2,8 +2,10 @@ from qiskit import Aer, execute
 from qiskit import QuantumCircuit
 from qiskit import IBMQ
 from qiskit.tools.monitor import job_monitor
+from qiskit.compiler import transpile
 
 from project_qsiris.conversion_qo_qiskit import *
+from project_qsiris.conversion_qiskit_qo import *
 
 def qiskit_test():
 
@@ -19,7 +21,7 @@ def qiskit_test():
 
     return counts
 
-
+##Quantum Odyssey to Qiskit:##
 def execute_qiskit(res):
 
     qc = odyssey_to_qiskit(res,
@@ -78,3 +80,17 @@ def real_device_qiskit(res):
         )
     result = {"ibmq_lima_counts": counts, "qasm_circuit": qasm_circuit}
     return result
+####
+
+##Qiskit to Quantum Odyssey:##
+def qiskit_extraction(qiskit_file):
+
+    exec(qiskit_file)
+    circuit=qc
+    circuit = transpile(circuit, basis_gates=['id', 'u3', 'cx'], optimization_level=1, seed_transpiler=1)
+    puzzle = qiskit_to_odyssey(circuit, puzzle_type="General")
+
+    return puzzle
+
+
+

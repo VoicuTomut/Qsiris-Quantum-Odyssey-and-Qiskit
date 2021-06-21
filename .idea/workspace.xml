@@ -21,9 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d988e2db-5ee2-43ea-8dec-f521add8df5c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_odyssey_to_qiskit.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/example_odyssey_to_qiskit.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/circuits/qiskit_to_odyssey/example_001.qpf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/circuits/qiskit_to_odyssey/example_002.qpf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/circuits/qiskit_to_odyssey/example_003.qpf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/example_qiskit_to_odyssey.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/example_qiskit_to_odyssey.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project_qsiris/conversion_qo_qiskit.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_qsiris/conversion_qo_qiskit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project_qsiris/conversion_qiskit_qo.py" beforeDir="false" afterPath="$PROJECT_DIR$/project_qsiris/conversion_qiskit_qo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qsiris_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/qsiris_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qsiris_cloud.py" beforeDir="false" afterPath="$PROJECT_DIR$/qsiris_cloud.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
