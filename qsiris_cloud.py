@@ -9,7 +9,7 @@ from flask import make_response
 from flask import Flask
 from flask import render_template
 
-from qsiris_api import execute_qiskit, decompose_qiskit,real_device_qiskit
+from qsiris_api import execute_qiskit, decompose_qiskit,real_device_qiskit,qiskit_extraction
 
 app = Flask(__name__)
 
@@ -17,6 +17,19 @@ app = Flask(__name__)
 @app.route("/")
 def welcome():
     return render_template('test_server.html')
+
+
+@app.route("/QK_QO", methods=["POST","GET"])
+def qk_qo():
+    if request:
+        req = request.data
+        print("!!!!!")
+        print("request:",req)
+        print("!!!!!")
+        return qiskit_extraction(req)
+    else:
+        return "Not json fie", 400
+
 
 
 @app.route("/QO_QK_convertor", methods=["POST"])
@@ -41,17 +54,6 @@ def qo_qk():
     print(res)
     return res
 
-@app.route("/QK_QO_convertor", methods=["POST"])
-def qk_qo():
-
-    # data = json.loads(request.form.get('jsonfile'))
-    file = request.files['jsonfile']
-    puz = None
-
-    res = qiskit_extraction(qiskit_file)
-
-    print(res)
-    return res
 
 @app.route("/QO_QK_real", methods=["POST"])
 def qk_real():
@@ -60,6 +62,8 @@ def qk_real():
         return real_device_qiskit(req)
     else:
         return "Not json fie", 400
+
+
 
 
 if __name__ == "__main__":

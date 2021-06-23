@@ -85,8 +85,12 @@ def real_device_qiskit(res):
 ##Qiskit to Quantum Odyssey:##
 def qiskit_extraction(qiskit_file):
 
-    exec(qiskit_file)
-    circuit=qc
+
+    
+    loc={}
+    exec(qiskit_file,globals(),loc)
+    circuit=loc['qc']
+    print(circuit)
     circuit = transpile(circuit, basis_gates=['id', 'u3', 'cx'], optimization_level=1, seed_transpiler=1)
     puzzle = qiskit_to_odyssey(circuit, puzzle_type="General")
 
