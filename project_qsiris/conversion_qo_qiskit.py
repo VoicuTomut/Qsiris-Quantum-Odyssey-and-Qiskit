@@ -73,8 +73,24 @@ def add_odyssey_moment(puzzle_gate, qc):
                 unit = extract_odyssey_matrix(
                     moment.original_form[qubit]["GateDefinition"]["DefinitionMatrix"]
                 )
-                qubits = [k for k in moment.filler_q]
+                qubits = []
+                filler_positions=[]
                 qubits.append(qubit)
+                print("custom definition:",moment.original_form[qubit]["SlaveGatesIDs"])
+                for filler in moment.original_form[qubit]["SlaveGatesIDs"]:
+                    filler_positions.append(int(filler/ moment.nr_q))
+
+                # sort the fillers
+                for  i in range(len(filler_positions)):
+                    order_placement=int(moment.original_form[filler_positions[i]]["OrderInPlacement"])
+                    order_placement=order_placement-1;
+                    if i!=order_placement:
+                        a=filler_positions[order_placement]
+                        filler_positions[order_placement]=filler_positions[i]
+                        filler_positions[i]=a
+                for filler in filler_positions:
+                    qubits.append(filler)
+                print(qubits)
                 qc.unitary(unit, qubits, moment.original_form[qubit]["GateDefinition"]["Name"])
                 if len(moment.filler_q) > 0:
                     print(

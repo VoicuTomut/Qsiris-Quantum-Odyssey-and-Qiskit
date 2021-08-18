@@ -1,0 +1,1469 @@
+{
+  "PuzzleDefinition": {
+    "ModuleID": "generic",
+    "ID": 0,
+    "QubitCapacity": 3,
+    "GateCapacity": 3,
+    "Name": "hzy2",
+    "InitialState": [
+      [
+        {
+          "Real": 1.0,
+          "Imaginary": 0.0,
+          "Magnitude": 1.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ]
+    ],
+    "FinalState": [
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.70710679328816484,
+          "Magnitude": 0.70710679328816484,
+          "Phase": 1.5707963267948966
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.70710679328816484,
+          "Magnitude": 0.70710679328816484,
+          "Phase": 1.5707963267948966
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ]
+    ],
+    "FinalBallState": [
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.70710679328816484,
+          "Magnitude": 0.70710679328816484,
+          "Phase": 1.5707963267948966
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.70710679328816484,
+          "Magnitude": 0.70710679328816484,
+          "Phase": 1.5707963267948966
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ],
+      [
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        },
+        {
+          "Real": 0.0,
+          "Imaginary": 0.0,
+          "Magnitude": 0.0,
+          "Phase": 0.0
+        }
+      ]
+    ],
+    "Difficulty": "Beginner",
+    "PuzzleType": "General",
+    "Description": "SavePuzzlePanel(Clone)"
+  },
+  "PuzzleGateSlots": [
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 1010,
+        "Name": "Filler",
+        "Type": 7,
+        "IconPath": "Artwork/GatesIcons/FillerGate_Small",
+        "CompatibleQubits": 0,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 0,
+        "Item2": 0
+      },
+      "SlaveGatesIDs": [],
+      "MasterGateID": 4,
+      "OrderInPlacement": 1,
+      "ID": 1
+    },
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 5,
+        "Name": "I",
+        "Type": 0,
+        "IconPath": "Artwork/GatesIcons/IGate",
+        "CompatibleQubits": 1,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 0,
+        "Item2": 1
+      },
+      "SlaveGatesIDs": [],
+      "MasterGateID": 0,
+      "OrderInPlacement": 0,
+      "ID": 2
+    },
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 5,
+        "Name": "I",
+        "Type": 0,
+        "IconPath": "Artwork/GatesIcons/IGate",
+        "CompatibleQubits": 1,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 0,
+        "Item2": 2
+      },
+      "SlaveGatesIDs": [],
+      "MasterGateID": 0,
+      "OrderInPlacement": 0,
+      "ID": 3
+    },
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 21,
+        "Name": "hzy",
+        "Type": 8,
+        "IconPath": "Artwork/GatesIcons/CustomGate",
+        "CompatibleQubits": 3,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": -0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": -1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": -0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": -1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": 1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": 1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": 1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": 1.5707963267948966
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": -0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": -1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": -0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": -1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": -0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": -1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": 1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": 1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": -0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": -1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": 1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": -0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": -1.5707963267948966
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": -0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": -1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.70710679328816484,
+              "Magnitude": 0.70710679328816484,
+              "Phase": 1.5707963267948966
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 1,
+        "Item2": 0
+      },
+      "SlaveGatesIDs": [
+        1,
+        7
+      ],
+      "MasterGateID": 0,
+      "OrderInPlacement": 0,
+      "ID": 4
+    },
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 5,
+        "Name": "I",
+        "Type": 0,
+        "IconPath": "Artwork/GatesIcons/IGate",
+        "CompatibleQubits": 1,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 1,
+        "Item2": 1
+      },
+      "SlaveGatesIDs": [],
+      "MasterGateID": 0,
+      "OrderInPlacement": 0,
+      "ID": 5
+    },
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 5,
+        "Name": "I",
+        "Type": 0,
+        "IconPath": "Artwork/GatesIcons/IGate",
+        "CompatibleQubits": 1,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 1,
+        "Item2": 2
+      },
+      "SlaveGatesIDs": [],
+      "MasterGateID": 0,
+      "OrderInPlacement": 0,
+      "ID": 6
+    },
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 1010,
+        "Name": "Filler",
+        "Type": 7,
+        "IconPath": "Artwork/GatesIcons/FillerGate_Small",
+        "CompatibleQubits": 0,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 2,
+        "Item2": 0
+      },
+      "SlaveGatesIDs": [],
+      "MasterGateID": 4,
+      "OrderInPlacement": 2,
+      "ID": 7
+    },
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 5,
+        "Name": "I",
+        "Type": 0,
+        "IconPath": "Artwork/GatesIcons/IGate",
+        "CompatibleQubits": 1,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 2,
+        "Item2": 1
+      },
+      "SlaveGatesIDs": [],
+      "MasterGateID": 0,
+      "OrderInPlacement": 0,
+      "ID": 8
+    },
+    {
+      "IsGateVisible": false,
+      "GateDefinition": {
+        "ID": 5,
+        "Name": "I",
+        "Type": 0,
+        "IconPath": "Artwork/GatesIcons/IGate",
+        "CompatibleQubits": 1,
+        "DefinitionMatrix": [
+          [
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            }
+          ],
+          [
+            {
+              "Real": 0.0,
+              "Imaginary": 0.0,
+              "Magnitude": 0.0,
+              "Phase": 0.0
+            },
+            {
+              "Real": 1.0,
+              "Imaginary": 0.0,
+              "Magnitude": 1.0,
+              "Phase": 0.0
+            }
+          ]
+        ]
+      },
+      "CircuitPosition": {
+        "Item1": 2,
+        "Item2": 2
+      },
+      "SlaveGatesIDs": [],
+      "MasterGateID": 0,
+      "OrderInPlacement": 0,
+      "ID": 9
+    }
+  ],
+  "AvailableGates": [
+    {
+      "ID": 0,
+      "Name": "H",
+      "Type": 2,
+      "IconPath": "Artwork/GatesIcons/HGate",
+      "CompatibleQubits": 1,
+      "DefinitionMatrix": [
+        [
+          {
+            "Real": 0.70710679328816484,
+            "Imaginary": 0.0,
+            "Magnitude": 0.70710679328816484,
+            "Phase": 0.0
+          },
+          {
+            "Real": 0.70710679328816484,
+            "Imaginary": 0.0,
+            "Magnitude": 0.70710679328816484,
+            "Phase": 0.0
+          }
+        ],
+        [
+          {
+            "Real": 0.70710679328816484,
+            "Imaginary": 0.0,
+            "Magnitude": 0.70710679328816484,
+            "Phase": 0.0
+          },
+          {
+            "Real": -0.70710679328816484,
+            "Imaginary": 0.0,
+            "Magnitude": 0.70710679328816484,
+            "Phase": 3.1415926535897931
+          }
+        ]
+      ]
+    },
+    {
+      "ID": 1,
+      "Name": "Z",
+      "Type": 1,
+      "IconPath": "Artwork/GatesIcons/ZGate",
+      "CompatibleQubits": 1,
+      "DefinitionMatrix": [
+        [
+          {
+            "Real": 1.0,
+            "Imaginary": 0.0,
+            "Magnitude": 1.0,
+            "Phase": 0.0
+          },
+          {
+            "Real": 0.0,
+            "Imaginary": 0.0,
+            "Magnitude": 0.0,
+            "Phase": 0.0
+          }
+        ],
+        [
+          {
+            "Real": 0.0,
+            "Imaginary": 0.0,
+            "Magnitude": 0.0,
+            "Phase": 0.0
+          },
+          {
+            "Real": -1.0,
+            "Imaginary": 0.0,
+            "Magnitude": 1.0,
+            "Phase": 3.1415926535897931
+          }
+        ]
+      ]
+    },
+    {
+      "ID": 2,
+      "Name": "Y",
+      "Type": 5,
+      "IconPath": "Artwork/GatesIcons/YGate",
+      "CompatibleQubits": 1,
+      "DefinitionMatrix": [
+        [
+          {
+            "Real": 0.0,
+            "Imaginary": 0.0,
+            "Magnitude": 0.0,
+            "Phase": 0.0
+          },
+          {
+            "Real": 0.0,
+            "Imaginary": -1.0,
+            "Magnitude": 1.0,
+            "Phase": -1.5707963267948966
+          }
+        ],
+        [
+          {
+            "Real": 0.0,
+            "Imaginary": 1.0,
+            "Magnitude": 1.0,
+            "Phase": 1.5707963267948966
+          },
+          {
+            "Real": 0.0,
+            "Imaginary": 0.0,
+            "Magnitude": 0.0,
+            "Phase": 0.0
+          }
+        ]
+      ]
+    }
+  ],
+  "Tooltips": []
+}

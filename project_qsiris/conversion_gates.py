@@ -36,7 +36,6 @@ def _vector_to_odyssey(vec):
     :return: vector of dictionaries with the following structure:
     {'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0}
     """
-    print("vec:",vec)
     v = []
     for i in vec:
         l=_complex_to_odyssey(i)
