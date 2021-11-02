@@ -1,0 +1,2 @@
+
+from .conversion_qo_qiskit import odyssey_to_qiskit

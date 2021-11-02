@@ -58,21 +58,24 @@ def _matrix_to_odyssey(mat):
     return m
 
 
-def _transpose_list(A):
+def _transpose_list(A,nr_q):
     """
-    :param A: [[]]
+    :param A: []
     :return: transpose of A
     """
-    c = len(A[0])
-    l = len(A)
 
-    B = [["" for i in range(l)] for j in range(c)]
+    c = nr_q
+    l = int(len(A)/nr_q)
 
-    b_c = 0
 
-    for j in range(c):
-        for i in range(l):
-            B[j][i] = A[i][j]
+    B = [["" for i in range(c)] for j in range(l)]
+
+
+
+    for gate in A:
+        j=gate['CircuitPosition']['Item1']
+        i=gate['CircuitPosition']['Item2']
+        B[i][j] = gate
 
     return B
 
