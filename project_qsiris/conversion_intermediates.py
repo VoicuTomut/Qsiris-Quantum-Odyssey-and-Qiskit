@@ -31,7 +31,6 @@ class OdysseyMoment:
     def _filter_qubits(self, param_gate_name):
         cq = []
         for j in range(self.nr_q):
-            print(self.original_form[j])
             gate_name = self.original_form[j]["GateDefinition"]["Name"]
             if gate_name == param_gate_name:
                 cq.append(j)

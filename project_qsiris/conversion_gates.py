@@ -36,7 +36,7 @@ def _vector_to_odyssey(vec):
     :return: vector of dictionaries with the following structure:
     {'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0}
     """
-    print("vec:",vec)
+
     v = []
     for i in vec:
         l=_complex_to_odyssey(i)
@@ -58,11 +58,16 @@ def _matrix_to_odyssey(mat):
     return m
 
 
-def _transpose_list(A,nr_q):
+def _transpose_list(L,nr_q):
     """
     :param A: []
     :return: transpose of A
     """
+
+    A=[]
+    for line in L:
+        for gate in line:
+            A.append(gate)
 
     c = nr_q
     l = int(len(A)/nr_q)

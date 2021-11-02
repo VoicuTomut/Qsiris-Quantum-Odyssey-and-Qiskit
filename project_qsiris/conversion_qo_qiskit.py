@@ -39,7 +39,7 @@ def extract_odyssey_matrix(mat):
     return mat_conv
 
 
-def add_odyssey_moment(puzzle_gate, qc):
+def add_odyssey_moment(puzzle_gate, qc, qiskit_circuit):
     """
     :param puzzle_gate: string of gates
     :param qc: QuantumCircuit Qiskit
@@ -47,7 +47,6 @@ def add_odyssey_moment(puzzle_gate, qc):
     """
 
     moment = OdysseyMoment(puzzle_gate)
-
 
     if len(moment.control_q) == 0:
         """
@@ -57,14 +56,34 @@ def add_odyssey_moment(puzzle_gate, qc):
             gate_name = moment.original_form[qubit]["GateDefinition"]["Name"]
             if gate_name == "X":
                 qc.x(qubit)
+                ########################################################
+                qiskit_circuit = qiskit_circuit + 'qc.x({}) \n'.format(str(qubit))
+                ########################################################
             elif gate_name == "Y":
                 qc.y(qubit)
+                ########################################################
+                qiskit_circuit = qiskit_circuit + 'qc.y({}) \n'.format(str(qubit))
+                ########################################################
+            elif gate_name == "S":
+                qc.s(qubit)
+                ########################################################
+                qiskit_circuit = qiskit_circuit + 'qc.s({}) \n'.format(str(qubit))
+                ########################################################
             elif gate_name == "Z":
                 qc.z(qubit)
+                ########################################################
+                qiskit_circuit = qiskit_circuit + 'qc.z({}) \n'.format(str(qubit))
+                ########################################################
             elif gate_name == "H":
                 qc.h(qubit)
+                ########################################################
+                qiskit_circuit = qiskit_circuit + 'qc.h({}) \n'.format(str(qubit))
+                ########################################################
             elif gate_name == "I":
                 qc.id(qubit)
+                ########################################################
+                qiskit_circuit = qiskit_circuit + 'qc.id({}) \n'.format(str(qubit))
+                ########################################################
             elif gate_name == "Filler":
                 print(
                     "The fillers are empty gates so they will not be converted to qiskit",
@@ -74,10 +93,35 @@ def add_odyssey_moment(puzzle_gate, qc):
                 unit = extract_odyssey_matrix(
                     moment.original_form[qubit]["GateDefinition"]["DefinitionMatrix"]
                 )
-                qubits = [k for k in moment.filler_q]
+                qubits = []
+                filler_positions = []
                 qubits.append(qubit)
+                print("custom definition:", moment.original_form[qubit]["SlaveGatesIDs"])
+                for filler in moment.original_form[qubit]["SlaveGatesIDs"]:
+                    filler_positions.append(int(filler / moment.nr_q))
 
+                # sort the fillers
+                for i in range(len(filler_positions)):
+                    order_placement = int(moment.original_form[filler_positions[i]]["OrderInPlacement"])
+                    order_placement = order_placement - 1;
+                    if i != order_placement:
+                        a = filler_positions[order_placement]
+                        filler_positions[order_placement] = filler_positions[i]
+                        filler_positions[i] = a
+                for filler in filler_positions:
+                    qubits.append(filler)
+
+                ########################################################
+                qiskit_circuit = qiskit_circuit + 'unit={} \n'.format(unit)
+                qiskit_circuit = qiskit_circuit + 'qubits={} \n'.format(qubits)
+                ########################################################
                 qc.unitary(unit, qubits, moment.original_form[qubit]["GateDefinition"]["Name"])
+
+                ########################################################
+                qiskit_circuit = qiskit_circuit + 'qc.unitary(unit, qubits, label="{}") \n'.format(
+                    moment.original_form[qubit]["GateDefinition"]["Name"].lower())
+                ########################################################
+
                 if len(moment.filler_q) > 0:
                     print(
                         "This gate {} is not necessarily converted correctly."
@@ -85,16 +129,17 @@ def add_odyssey_moment(puzzle_gate, qc):
                             gate_name
                         )
                     )
-        return
+
+        return qiskit_circuit
 
     """
         If there are controls on the puzzle gate
     """
     for i in range(moment.nr_q):
         if (
-            (moment.original_form[i]["GateDefinition"]["Name"] != "CTRL")
-            and (moment.original_form[i]["GateDefinition"]["Name"] != "I")
-            and (moment.original_form[i]["GateDefinition"]["Name"] != "Filler")
+                (moment.original_form[i]["GateDefinition"]["Name"] != "CTRL")
+                and (moment.original_form[i]["GateDefinition"]["Name"] != "I")
+                and (moment.original_form[i]["GateDefinition"]["Name"] != "Filler")
         ):
 
             control = moment.control_q.copy()
@@ -114,18 +159,28 @@ def add_odyssey_moment(puzzle_gate, qc):
             for k in range(1, len(mat) + 1):
                 for j in range(1, len(mat) + 1):
                     unit[-k][-j] = mat[-k][-j]
-
+                # print(unit)
+                # print("control:",moment.control_q)
+                # print("qubits:",qubits[::-1])
+            mc_q = '_'
+            for l in moment.control_q:
+                mc_q = mc_q + str(l) + '_'
+            name = "c" + mc_q + moment.original_form[i]["GateDefinition"]["Name"] + "_" + str(i) + "_"
+            # print(name)
+            ########################################################
+            qiskit_circuit = qiskit_circuit + 'unit={} \n'.format(repr(unit))
+            qiskit_circuit = qiskit_circuit + 'qubits={} \n'.format(repr(qubits))
+            qiskit_circuit = qiskit_circuit + 'name="{}" \n'.format(name.lower())
+            ########################################################
             qc.unitary(
                 unit,
                 qubits[::-1],
-                "C "
-                + str(moment.control_q)
-                + " -> "
-                + moment.original_form[i]["GateDefinition"]["Name"]
-                + "["
-                + str(i)
-                + "]",
+                name.lower(),
             )
+            ########################################################
+            qiskit_circuit = qiskit_circuit + 'qc.unitary(unit,qubits[::-1],name) \n'.format(name.lower())
+            ########################################################
+    return qiskit_circuit
 
 
 def load_oddysey_puzzle(path):
@@ -135,9 +190,9 @@ def load_oddysey_puzzle(path):
     return puzzle
 
 
-def odyssey_to_qiskit(puzzle, incl_initial_state = False,
-                      use_barrier = False,
-                      incl_all_measurements = False):
+def odyssey_to_qiskit(puzzle, incl_initial_state=False,
+                      use_barrier=False,
+                      incl_all_measurements=False):
     """
     :param path: (puzzle) path to puzzle
     :param initial_state: (initial qubits state ) string of dictionaries
@@ -147,16 +202,36 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
     nr_q = get_odyssey_nr_qubits(puzzle)
     qc = QuantumCircuit(QuantumRegister(nr_q), ClassicalRegister(nr_q))
 
+    ########################################################
+    qiskit_circuit = 'import numpy as np \n'
+    qiskit_circuit = qiskit_circuit + 'from numpy import array\n'
+    qiskit_circuit = qiskit_circuit + 'from qiskit import QuantumCircuit,QuantumRegister,ClassicalRegister \n \n'
+
+    # initializae circuit:
+    qiskit_circuit = qiskit_circuit + 'nr_q={} \n'.format(nr_q)
+    qiskit_circuit = qiskit_circuit + 'qc = QuantumCircuit(QuantumRegister({}), ClassicalRegister({})) \n \n'.format(
+        nr_q, nr_q)
+    ########################################################
+
     if incl_initial_state != False:
         qc.initialize(incl_initial_state)
 
-    for puzzle_gate in conv._transpose_list(puzzle["PuzzleGateSlots"],nr_q):
+    PuzzleGates = np.reshape(puzzle['PuzzleGateSlots'], (puzzle['PuzzleDefinition']['QubitCapacity'],
+                                                         int(len(puzzle['PuzzleGateSlots']) /
+                                                             puzzle['PuzzleDefinition']['QubitCapacity'])))
+
+    for puzzle_gate in conv._transpose_list(PuzzleGates,nr_q):
         if use_barrier:
             qc.barrier()
-        add_odyssey_moment(puzzle_gate, qc)
+            ########################################################
+            qiskit_circuit = qiskit_circuit + 'qc.barrier() \n'
+            ########################################################
+        qiskit_circuit = add_odyssey_moment(puzzle_gate, qc, qiskit_circuit)
 
     if incl_all_measurements:
         for index in range(nr_q):
             qc.measure(qc.qregs[0][index], qc.cregs[0][nr_q - 1 - index])
-
-    return qc
+            ########################################################
+            qiskit_circuit = qiskit_circuit + 'qc.measure(qc.qregs[0][{}], qc.cregs[0][{}]) \n'.format(index,                                                                                             str(nr_q - 1 - index))
+            ########################################################
+    return qc, qiskit_circuit
