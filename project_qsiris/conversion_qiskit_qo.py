@@ -25,11 +25,11 @@ def _fill_slot(
     slot = {}
     slot["IsGateVisible"] = visib
     slot["GateDefinition"] = gate
-    slot["CircuitPosition"] = { "Item1": slot_position[0],"Item2": slot_position[1] }
+    #slot["CircuitPosition"] = { "Item1": slot_position[0],"Item2": slot_position[1] }
     slot["SlaveGatesIDs"] = None
     slot["MasterGateID"] = -1
     slot["OrderInPlacement"] = 0
-    slot["ID"] = slot_position[0]+slot_position[1]*slot_position[0]
+    #slot["ID"] = slot_position[0]+slot_position[1]*slot_position[0]
 
     return slot
 
@@ -137,7 +137,7 @@ def qiskit_to_odyssey(qiskit_circuit, gate_cap=7, puzzle_type="General", Solutio
 
 
 
-    puzzle["PuzzleGateSlots"] = conv._transpose_list(_get_odyssey_circuit(qiskit_circuit),len(qiskit_circuit.qubits))
+    puzzle["PuzzleGateSlots"] = conv._transpose_list(_get_odyssey_circuit(qiskit_circuit))
     
     
     puzzle["AvailableGates"] = [conv.H, conv.Z, conv.Y, conv.X, conv.CT]
