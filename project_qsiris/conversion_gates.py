@@ -76,7 +76,7 @@ def _transpose_list(L,nr_q):
     B = [["" for i in range(c)] for j in range(l)]
 
 
-
+    print(gate)
     for gate in A:
         j=gate['CircuitPosition']['Item1']
         i=gate['CircuitPosition']['Item2']
