@@ -104,6 +104,7 @@ def _get_odyssey_gate(name, matrix, i_d=9, t=8,
          {'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0}],
         [{'Real': 1.0, 'Imaginary': 0.0, 'Magnitude': 1.0, 'Phase': 0.0},
          {'Real': 0.0, 'Imaginary': 0.0, 'Magnitude': 0.0, 'Phase': 0.0}]]}
+
     """
     gate = {}
     gate["ID"] = i_d

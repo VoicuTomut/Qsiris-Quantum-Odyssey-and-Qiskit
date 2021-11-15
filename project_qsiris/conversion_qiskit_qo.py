@@ -105,7 +105,7 @@ def _generate_ball(nr_q):
     return ball
 
 
-def qiskit_to_odyssey(qiskit_circuit, gate_cap=7, puzzle_type="General"):
+def qiskit_to_odyssey(qiskit_circuit, gate_cap=7, puzzle_type="General", SolutionMinimumGates=1):
     """
     :param qiskit_circuit: qiskit circuit
     :param gate_cap: (depth of the circuit in odyssey)int
@@ -114,7 +114,7 @@ def qiskit_to_odyssey(qiskit_circuit, gate_cap=7, puzzle_type="General"):
     """
     puzzle = {}
     puzzle["PuzzleDefinition"] = ""
-    puzzle["PuzzleGates"] = ""
+    puzzle["PuzzleGateSlots"] = ""
     puzzle["AvailableGates"] = ""
     puzzle["Tooltips"] = []
 
@@ -122,22 +122,24 @@ def qiskit_to_odyssey(qiskit_circuit, gate_cap=7, puzzle_type="General"):
     initial_state[0][0]= 1
 
     puzzle["PuzzleDefinition"] = {}
-    puzzle["PuzzleDefinition"]["ModuleID"] = "Qiskit"
+
     puzzle["PuzzleDefinition"]["ID"] = 57
     puzzle["PuzzleDefinition"]["QubitCapacity"] = len(qiskit_circuit.qubits)
     puzzle["PuzzleDefinition"]["GateCapacity"] = gate_cap
+    puzzle["PuzzleDefinition"]["SolutionMinimumGates"]=SolutionMinimumGates
     puzzle["PuzzleDefinition"]["Name"] = qiskit_circuit.name
     puzzle["PuzzleDefinition"]["InitialState"] = conv._matrix_to_odyssey(initial_state)  #
     puzzle["PuzzleDefinition"]["FinalState"] = conv._matrix_to_odyssey(initial_state)  #
-    puzzle["PuzzleDefinition"]["FinalBallState"] = _generate_ball(
-        len(qiskit_circuit.qubits))  #
-    puzzle["PuzzleDefinition"]["Difficulty"] = "Beginner"
-    puzzle["PuzzleDefinition"]["PuzzleType"] = puzzle_type
-    puzzle["PuzzleDefinition"]["Description"] = "SavePuzzlePanel(Clone)"
+    puzzle["PuzzleDefinition"]["FinalBallState"] = _generate_ball(len(qiskit_circuit.qubits))  #
 
-    puzzle["PuzzleGates"] = conv._transpose_list(_get_odyssey_circuit(qiskit_circuit))
+
+
+    puzzle["PuzzleGateSlots"] = conv._transpose_list(_get_odyssey_circuit(qiskit_circuit))
+    
+    
     puzzle["AvailableGates"] = [conv.H, conv.Z, conv.Y, conv.X, conv.CT]
-
+    
+    
     return puzzle
 
 
