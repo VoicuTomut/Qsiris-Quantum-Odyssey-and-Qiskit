@@ -137,7 +137,11 @@ def qiskit_to_odyssey(qiskit_circuit, gate_cap=7, puzzle_type="General", Solutio
 
 
 
-    puzzle["PuzzleGateSlots"] = conv._transpose_list(_get_odyssey_circuit(qiskit_circuit))
+    ps=[]
+    for line in  conv._transpose_list(_get_odyssey_circuit(qiskit_circuit)):
+        for slot in line:
+            ps.append(slot)
+    puzzle["PuzzleGateSlots"] = ps #conv._transpose_list(_get_odyssey_circuit(qiskit_circuit))
     
     
     puzzle["AvailableGates"] = [conv.H, conv.Z, conv.Y, conv.X, conv.CT]
