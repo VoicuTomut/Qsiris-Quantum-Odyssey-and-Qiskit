@@ -220,7 +220,7 @@ def odyssey_to_qiskit(puzzle, incl_initial_state=False,
                                                          int(len(puzzle['PuzzleGateSlots']) /
                                                              puzzle['PuzzleDefinition']['QubitCapacity'])))
 
-    for puzzle_gate in conv._transpose_list(PuzzleGates,nr_q):
+    for puzzle_gate in conv._transpose_list2(PuzzleGates,nr_q):
         if use_barrier:
             qc.barrier()
             ########################################################

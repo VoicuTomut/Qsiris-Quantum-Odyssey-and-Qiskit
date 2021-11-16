@@ -88,6 +88,31 @@ def _transpose_list(A):
     return B
 
 
+def _transpose_list2(L,nr_q):
+    """
+    :param A: []
+    :return: transpose of A
+    """
+
+    A = []
+    for line in L:
+        for gate in line:
+            A.append(gate)
+    c = nr_q
+    l = int(len(A) / nr_q)
+
+    B = [["" for i in range(c)] for j in range(l)]
+
+    for gate in A:
+
+        j=gate['CircuitPosition']['Item1']
+        i=gate['CircuitPosition']['Item2']
+        print("i",i)
+        print("j", j)
+        B[i][j] = gate
+    return B
+
+
 def _get_odyssey_gate(name, matrix, i_d=9, t=8,
                       icon_path="Artwork/GatesIcons/CustomGate"):
     """
