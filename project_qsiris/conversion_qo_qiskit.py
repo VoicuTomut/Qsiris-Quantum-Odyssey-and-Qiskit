@@ -97,20 +97,33 @@ def add_odyssey_moment(puzzle_gate, qc, qiskit_circuit):
                 filler_positions = []
                 qubits.append(qubit)
                 print("custom definition:", moment.original_form[qubit]["SlaveGatesIDs"])
-                for filler in moment.original_form[qubit]["SlaveGatesIDs"]:
-                    filler_positions.append(int(filler / moment.nr_q))
+                for f_gate in moment.original_form:
+                    if f_gate["ID"] in moment.original_form[qubit]["SlaveGatesIDs"]:
+                        filler_positions.append(f_gate['CircuitPosition']['Item1'])
+                print("filler positions",filler_positions)
 
                 # sort the fillers
+                print("moment-original_form:",len(moment.original_form))
+                
                 for i in range(len(filler_positions)):
+                    print("ifil",i)
+                    print(filler_positions[i])
+                    
+                    print("moment original form[ifil]:",moment.original_form[filler_positions[i]-1])
                     order_placement = int(moment.original_form[filler_positions[i]]["OrderInPlacement"])
+                    print("order_placement",order_placement)
                     order_placement = order_placement - 1;
                     if i != order_placement:
+                        print("order in placement",i)
                         a = filler_positions[order_placement]
                         filler_positions[order_placement] = filler_positions[i]
                         filler_positions[i] = a
+                
                 for filler in filler_positions:
                     qubits.append(filler)
-
+                  
+                
+                print("custom-unitary:",unit)
                 ########################################################
                 qiskit_circuit = qiskit_circuit + 'unit={} \n'.format(unit)
                 qiskit_circuit = qiskit_circuit + 'qubits={} \n'.format(qubits)
@@ -216,8 +229,8 @@ def odyssey_to_qiskit(puzzle, incl_initial_state=False,
     if incl_initial_state != False:
         qc.initialize(incl_initial_state)
 
-    PuzzleGates = np.reshape(puzzle['PuzzleGateSlots'], (puzzle['PuzzleDefinition']['QubitCapacity'],
-                                                         int(len(puzzle['PuzzleGateSlots']) /
+    PuzzleGates = np.reshape(puzzle['PuzzleGates'], (puzzle['PuzzleDefinition']['QubitCapacity'],
+                                                         int(len(puzzle['PuzzleGates']) /
                                                              puzzle['PuzzleDefinition']['QubitCapacity'])))
 
     for puzzle_gate in conv._transpose_list2(PuzzleGates,nr_q):
