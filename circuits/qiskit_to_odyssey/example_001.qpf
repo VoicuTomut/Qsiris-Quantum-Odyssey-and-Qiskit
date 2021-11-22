@@ -4,7 +4,7 @@
         "QubitCapacity": 2,
         "GateCapacity": 7,
         "SolutionMinimumGates": 1,
-        "Name": "circuit-0",
+        "Name": "circuit-1",
         "InitialState": [
             [
                 {
@@ -227,7 +227,7 @@
                 "Item1": 0,
                 "Item2": 0
             },
-            "ID": 0
+            "ID": 3
         },
         {
             "IsGateVisible": false,
@@ -275,7 +275,7 @@
                 "Item1": 0,
                 "Item2": 1
             },
-            "ID": 0
+            "ID": 4
         },
         {
             "IsGateVisible": false,
@@ -323,7 +323,7 @@
                 "Item1": 0,
                 "Item2": 2
             },
-            "ID": 0
+            "ID": 5
         },
         {
             "IsGateVisible": false,
@@ -371,7 +371,7 @@
                 "Item1": 0,
                 "Item2": 3
             },
-            "ID": 0
+            "ID": 6
         },
         {
             "IsGateVisible": false,
@@ -419,7 +419,7 @@
                 "Item1": 0,
                 "Item2": 4
             },
-            "ID": 0
+            "ID": 7
         },
         {
             "IsGateVisible": false,
@@ -467,7 +467,7 @@
                 "Item1": 0,
                 "Item2": 5
             },
-            "ID": 0
+            "ID": 8
         },
         {
             "IsGateVisible": false,
@@ -515,7 +515,7 @@
                 "Item1": 0,
                 "Item2": 6
             },
-            "ID": 0
+            "ID": 9
         },
         {
             "IsGateVisible": true,
@@ -563,7 +563,7 @@
                 "Item1": 1,
                 "Item2": 0
             },
-            "ID": 1
+            "ID": 5
         },
         {
             "IsGateVisible": false,
@@ -611,7 +611,7 @@
                 "Item1": 1,
                 "Item2": 1
             },
-            "ID": 2
+            "ID": 6
         },
         {
             "IsGateVisible": false,
@@ -659,7 +659,7 @@
                 "Item1": 1,
                 "Item2": 2
             },
-            "ID": 3
+            "ID": 7
         },
         {
             "IsGateVisible": false,
@@ -707,7 +707,7 @@
                 "Item1": 1,
                 "Item2": 3
             },
-            "ID": 4
+            "ID": 8
         },
         {
             "IsGateVisible": false,
@@ -755,7 +755,7 @@
                 "Item1": 1,
                 "Item2": 4
             },
-            "ID": 5
+            "ID": 9
         },
         {
             "IsGateVisible": false,
@@ -803,7 +803,7 @@
                 "Item1": 1,
                 "Item2": 5
             },
-            "ID": 6
+            "ID": 10
         },
         {
             "IsGateVisible": false,
@@ -851,7 +851,7 @@
                 "Item1": 1,
                 "Item2": 6
             },
-            "ID": 7
+            "ID": 11
         }
     ],
     "AvailableGates": [

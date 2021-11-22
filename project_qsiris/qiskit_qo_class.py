@@ -12,10 +12,22 @@ class Puzzle:
         self.PuzzleDefinition = PuzzleDefinition(qiskit_circuit, gate_cap)  #
         self.Tooltips = []  #
         self.AvailableGates = [conv2.H, conv2.Z, conv2.Y, conv2.X, conv2.CT]  #
-        self.PuzzleGateSlots = populagte_PuzzleGateSlots(self, qiskit_circuit, gate_cap)
+        self.PuzzleGateSlots = self.populagte_PuzzleGateSlots( qiskit_circuit, gate_cap)
 
     def populagte_PuzzleGateSlots(self, qiskit_circuit, gate_cap):
-        pass
+
+        circ=conv2._get_odyssey_circuit(qiskit_circuit)
+
+        pgs=[ ]
+        for i in range(len(circ)):
+            gate_line=circ[i]
+            for j in range(len(gate_line)):
+                slot=gate_line[j]
+                # slot correction:
+                slot.CircuitPosition=(i,  j)
+                pgs.append(slot)
+
+        return pgs
 
 
 class PuzzleDefinition:
@@ -28,6 +40,18 @@ class PuzzleDefinition:
         self.InitialState = conv2._matrix_to_odyssey(self._default_initial_state())
         self.FinalState = conv2._matrix_to_odyssey(self._default_initial_state())
         self.FinalBallState = self._generate_ball()
+
+    def print_info(self):
+
+        print("Id:",self.ID)
+        print("QubitCapacity:", self.QubitCapacity)
+        print("GateCapacity:", self.GateCapacity)
+        print("SolutionMinimumGates:", self.SolutionMinimumGates)
+        print("InitialState:", self.InitialState)
+        print("FinalState:", self.FinalState)
+        print("FinalBallState:", self.FinalBallState)
+
+
 
     def _default_initial_state(self):
         initial_state = [[0] for t in range(2 ** self.QubitCapacity)]
@@ -66,28 +90,4 @@ class PuzzleDefinition:
         self.InitialState.FinalState = conv2._vector_to_odyssey(vec)
 
 
-class GateDefinition:
 
-    def __inint__(self, name, matrix, i_d=9, t=8, icon_path="Artwork/GatesIcons/CustomGate"):
-        """"
-        
-        """
-        self.ID = i_d
-        self.Name = name
-        self.Type = t
-        self.IconPath = icon_path
-        self.CompatibleQubits = int(np.log2(len(matrix)))
-        self.DefinitionMatrix = conv2._matrix_to_odyssey(matrix)
-
-
-class Slot:
-    def __init__(self, gate, visib=False, slot_position={'Item1': -1, 'Item2': -1}):
-        """
-        
-        """
-        self.IsGateVisible = visib
-        self.GateDefinition = gate
-        self.CircuitPosition = slot_position
-        self.SlaveGatesIDs = None
-        self.MasterGateID = -1
-        self.OrderInPlacement = 0
