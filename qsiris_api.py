@@ -2,8 +2,12 @@ from qiskit import Aer, execute
 from qiskit import QuantumCircuit
 from qiskit import IBMQ
 from qiskit.tools.monitor import job_monitor
+from qiskit.compiler import transpile
+import flask
 
 from project_qsiris.conversion_qo_qiskit import *
+from project_qsiris.conversion_qiskit_qo import *
+from project_qsiris import Challenge
 
 def qiskit_test():
 
@@ -20,15 +24,30 @@ def qiskit_test():
     return counts
 
 
+def qiskit_extraction(qiskit_file):
+
+
+    
+    loc={}
+    exec(qiskit_file,globals(),loc)
+    circuit=loc['qc']
+    print(circuit)
+    circuit = transpile(circuit, basis_gates=['id', 'u3', 'cx'], optimization_level=1, seed_transpiler=1)
+    challenge = Challenge(circuit, gate_cap=7).to_json()
+    print("\n QO Puzzle \n",challenge )
+    return challenge
+
+
+
 def execute_qiskit(res):
 
-    qc = odyssey_to_qiskit(res,
+    qc,qiskit_circuit = odyssey_to_qiskit(res,
                            incl_initial_state = False,
                            use_barrier = True,
                            incl_all_measurements = True)
 
     backend = Aer.get_backend("qasm_simulator")
-    result = execute(qc, backend=backend, shots=100).result()
+    result = execute(qc, backend=backend, shots=int(res["QiskitShotsUsed"])).result()
     counts = result.get_counts()
 
     return counts
@@ -36,11 +55,12 @@ def execute_qiskit(res):
 
 def decompose_qiskit(res):
 
-    qc = odyssey_to_qiskit(res,
+    qc,qiskit_circuit = odyssey_to_qiskit(res,
                            incl_initial_state=False,
                            use_barrier=True,
                            incl_all_measurements=True)
     try:
+        print("QASM PROBLEM ")
         qasm_circuit = qc.qasm()
     except:
         qasm_circuit = (
@@ -49,7 +69,7 @@ def decompose_qiskit(res):
             "the numbers do not have enough decimals"
         )
 
-    return qasm_circuit
+    return qasm_circuit,qiskit_circuit
 
 
 def real_device_qiskit(res):
@@ -58,7 +78,7 @@ def real_device_qiskit(res):
     provider = IBMQ.get_provider('ibm-q')
     ibmq_lima = provider.get_backend("ibmq_lima")
 
-    qc = odyssey_to_qiskit(res,
+    qc,qiskit_circuit = odyssey_to_qiskit(res,
                            incl_initial_state=False,
                            use_barrier=True,
                            incl_all_measurements=True)

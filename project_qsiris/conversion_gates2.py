@@ -25,20 +25,32 @@ class GateDefinition:
         print("CompatibleQubits:",self.CompatibleQubits )
         print("DefinitionMatrix:",self.DefinitionMatrix )
 
+    def get_def(self):
+        gate_def={ "ID":self.ID,
+                   "Name": self.Name,
+                   "Type": self.Type,
+                   "IconPath":self.IconPath,
+                   "CompatibleQubits": self.CompatibleQubits,
+                   "DefinitionMatrix": self.DefinitionMatrix,}
+        return gate_def
 
 
+K=0
 class Slot:
-    def __init__(self, gate,nr_q, visib=False, slot_position={'Item1': -1, 'Item2': -1}):
+    def __init__(self, gate,nr_q, visib=False, slot_position=(-1,-1)):
         """
 
         """
+        
+     
         self.IsGateVisible = visib
         self.GateDefinition = gate
-        self.CircuitPosition = slot_position
+        self.CircuitPosition = {'Item1':slot_position[0], 'Item2': slot_position[1]}
         self.SlaveGatesIDs = None
         self.MasterGateID = -1
         self.OrderInPlacement = 0
-        self.ID=(self.CircuitPosition[0] + (self.CircuitPosition[1])*nr_q)
+        self.ID=((self.CircuitPosition['Item2']) + (self.CircuitPosition['Item1'])*(2))
+        
 
     def print_info(self):
         print("IsGateVisible:",self.IsGateVisible)
@@ -51,6 +63,17 @@ class Slot:
         print("OrderInPlacement: ", self.OrderInPlacement)
         print("ID:",self.ID)
         print("\n")
+
+    def get_slot(self):
+        slot={"IsGateVisible":self.IsGateVisible,
+              "GateDefinition":self.GateDefinition.get_def(),
+              "CircuitPosition": self.CircuitPosition,
+              "SlaveGatesIDs": self.SlaveGatesIDs,
+              "MasterGateID": self.MasterGateID,
+              "OrderInPlacement": self.OrderInPlacement,
+              "ID": self.ID
+              }
+        return slot
 
 
 ###
@@ -104,8 +127,10 @@ def _get_odyssey_circuit(qiskit_circuit):
             q = interm_gate.qubits[len(interm_gate.qubits) - 1]
 
             # Create gate:
+            print("Gae_name:=",interm_gate.name)
             if interm_gate.name in Gates_list.keys():
                 gate = Gates_list[interm_gate.name]
+                
             else:
                 gate = GateDefinition(name=interm_gate.name, matrix=interm_gate.matrice)
             qo_circuit[depth[q]][q] = Slot(gate, visib=True, slot_position=(depth[q], q), nr_q=nr_q )  # ADD Gate
