@@ -84,7 +84,7 @@ def _get_odyssey_circuit(qiskit_circuit):
     :return: odyssey circuit as a dictionary
     """
     nr_q = len(qiskit_circuit.qubits)
-    gate_depth = 7
+    gate_depth = 8
 
     depth = [0 for _ in range(nr_q)]
     qo_circuit = [[Slot(I, slot_position=(q, g),nr_q=nr_q ) for q in range(nr_q)] for g in range(gate_depth)]
@@ -121,18 +121,21 @@ def _get_odyssey_circuit(qiskit_circuit):
             for j in range(len(interm_gate.qubits) - 1):
                 q = interm_gate.qubits[j]
                 # Circuit[depth[q]][q]=p.name+'-F'
-                qo_circuit[depth[q]][q] = Slot(convx.F, visib=True, slot_position=(depth[q], q),nr_q=nr_q  )  # ADD Filler
+                qo_circuit[depth[q]][q] = Slot(F, visib=True, slot_position=(depth[q], q),nr_q=nr_q  )  # ADD Filler
+
                 depth[q] = depth[q] + 1
 
             q = interm_gate.qubits[len(interm_gate.qubits) - 1]
 
             # Create gate:
-            print("Gae_name:=",interm_gate.name)
+            print("Gate_name:=",interm_gate.name)
             if interm_gate.name in Gates_list.keys():
                 gate = Gates_list[interm_gate.name]
                 
             else:
                 gate = GateDefinition(name=interm_gate.name, matrix=interm_gate.matrice)
+
+
             qo_circuit[depth[q]][q] = Slot(gate, visib=True, slot_position=(depth[q], q), nr_q=nr_q )  # ADD Gate
             depth[q] = depth[q] + 1
 
