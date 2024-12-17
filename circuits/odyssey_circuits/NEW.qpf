@@ -1,0 +1,473 @@
+{
+  "QiskitShotsUsed": 200,
+  "PuzzleDefinition": {
+    "ID": 0,
+    "PuzzleGateSlots": [
+      {
+        "IsGateVisible": false,
+        "GateDefinition": {
+          "ID": 3,
+          "Name": "X",
+          "Type": 3,
+          "IconPath": "Artwork/GatesIcons/XGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              },
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              }
+            ],
+            [
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              },
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              }
+            ]
+          ]
+        },
+        "CircuitPosition": {
+          "Item1": 0,
+          "Item2": 0
+        },
+        "SlaveGatesIDs": null,
+        "MasterGateID": -1,
+        "OrderInPlacement": 0,
+        "ID": 1
+      },
+      {
+        "IsGateVisible": false,
+        "GateDefinition": {
+          "ID": 5,
+          "Name": "I",
+          "Type": 0,
+          "IconPath": "Artwork/GatesIcons/IGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              },
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              }
+            ],
+            [
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              },
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              }
+            ]
+          ]
+        },
+        "CircuitPosition": {
+          "Item1": 0,
+          "Item2": 1
+        },
+        "SlaveGatesIDs": null,
+        "MasterGateID": -1,
+        "OrderInPlacement": 0,
+        "ID": 2
+      },
+      {
+        "IsGateVisible": false,
+        "GateDefinition": {
+          "ID": 1,
+          "Name": "Z",
+          "Type": 1,
+          "IconPath": "Artwork/GatesIcons/ZGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              },
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              }
+            ],
+            [
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              },
+              {
+                "Real": -1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 3.1415926535897931
+              }
+            ]
+          ]
+        },
+        "CircuitPosition": {
+          "Item1": 0,
+          "Item2": 2
+        },
+        "SlaveGatesIDs": null,
+        "MasterGateID": -1,
+        "OrderInPlacement": 0,
+        "ID": 3
+      },
+      {
+        "IsGateVisible": false,
+        "GateDefinition": {
+          "ID": 5,
+          "Name": "I",
+          "Type": 0,
+          "IconPath": "Artwork/GatesIcons/IGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              },
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              }
+            ],
+            [
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              },
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              }
+            ]
+          ]
+        },
+        "CircuitPosition": {
+          "Item1": 1,
+          "Item2": 0
+        },
+        "SlaveGatesIDs": null,
+        "MasterGateID": -1,
+        "OrderInPlacement": 0,
+        "ID": 4
+      },
+      {
+        "IsGateVisible": false,
+        "GateDefinition": {
+          "ID": 2,
+          "Name": "Y",
+          "Type": 5,
+          "IconPath": "Artwork/GatesIcons/YGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              },
+              {
+                "Real": 0,
+                "Imaginary": -1,
+                "Magnitude": 1,
+                "Phase": -1.5707963267948966
+              }
+            ],
+            [
+              {
+                "Real": 0,
+                "Imaginary": 1,
+                "Magnitude": 1,
+                "Phase": 1.5707963267948966
+              },
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              }
+            ]
+          ]
+        },
+        "CircuitPosition": {
+          "Item1": 1,
+          "Item2": 1
+        },
+        "SlaveGatesIDs": null,
+        "MasterGateID": -1,
+        "OrderInPlacement": 0,
+        "ID": 5
+      },
+      {
+        "IsGateVisible": false,
+        "GateDefinition": {
+          "ID": 5,
+          "Name": "I",
+          "Type": 0,
+          "IconPath": "Artwork/GatesIcons/IGate",
+          "CompatibleQubits": 1,
+          "DefinitionMatrix": [
+            [
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              },
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              }
+            ],
+            [
+              {
+                "Real": 0,
+                "Imaginary": 0,
+                "Magnitude": 0,
+                "Phase": 0
+              },
+              {
+                "Real": 1,
+                "Imaginary": 0,
+                "Magnitude": 1,
+                "Phase": 0
+              }
+            ]
+          ]
+        },
+        "CircuitPosition": {
+          "Item1": 1,
+          "Item2": 2
+        },
+        "SlaveGatesIDs": null,
+        "MasterGateID": -1,
+        "OrderInPlacement": 0,
+        "ID": 6
+      }
+    ],
+    "AvailableGates": [],
+    "Tooltips": [],
+    "QubitCapacity": 2,
+    "GateCapacity": 3,
+    "SolutionMinimumGates": 3,
+    "Name": "UNNAMED_PUZZLE",
+    "ExperienceMultiplier": 1,
+    "HasOptimalSolution": false,
+    "InitialState": [
+      [
+        {
+          "Real": 1,
+          "Imaginary": 0,
+          "Magnitude": 1,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        }
+      ]
+    ],
+    "FinalState": [
+      [
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        }
+      ],
+      [
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        }
+      ],
+      [
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        }
+      ],
+      [
+        {
+          "Real": 0,
+          "Imaginary": -1,
+          "Magnitude": 1,
+          "Phase": -1.5707963267948966
+        }
+      ]
+    ],
+    "FinalBallState": [
+      [
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        }
+      ],
+      [
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        }
+      ],
+      [
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        }
+      ],
+      [
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": 0,
+          "Magnitude": 0,
+          "Phase": 0
+        },
+        {
+          "Real": 0,
+          "Imaginary": -1,
+          "Magnitude": 1,
+          "Phase": -1.5707963267948966
+        }
+      ]
+    ],
+    "IsTutorial": false
+  }
+}
