@@ -3,3 +3,4 @@ jsons
 matplotlib
 qiskit[visualization]
 jupyter
+qiskit-aer

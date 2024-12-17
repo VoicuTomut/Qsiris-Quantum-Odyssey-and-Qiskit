@@ -10,7 +10,7 @@ class IntermediateGate:
         self.name = gate[0].name
         self.matrice = gate[0].to_matrix()
         self.nrq = len(gate[1])
-        self.qubits = [j.index for j in gate[1]]
+        self.qubits = [j._index for j in gate[1]]#[j.index for j in gate[1]]
 
     def __str__(self):
         print("name:", self.name)

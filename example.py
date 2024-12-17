@@ -1,7 +1,8 @@
 import numpy as np
 
-from qiskit import QuantumRegister, QuantumCircuit
-from qiskit import Aer, execute
+from qiskit import QuantumRegister, QuantumCircuit, transpile
+from qiskit_aer import Aer
+from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram
 
 from project_qsiris.conversion_qo_qiskit import odyssey_to_qiskit, load_oddysey_puzzle
@@ -10,18 +11,20 @@ from project_qsiris.conversion_qiskit_qo import qiskit_to_odyssey, save_odyssey_
 """
     Odyssey to Qiskit
 """
-path = "circuits/qiskit_to_odyssey/example_002.qpf"
+path = "circuits/qiskit_to_odyssey/xy.qpf"#"circuits/qiskit_to_odyssey/example_002.qpf"
 
 puzzle = load_oddysey_puzzle(path)
 qc = odyssey_to_qiskit(puzzle, incl_initial_state = False,
                        incl_all_measurements=True)
 # qc.draw('mpl')
 
-backend = Aer.get_backend('qasm_simulator')
-job = execute(qc, backend, shots=1000)
-result = job.result()
-counts = result.get_counts()
+simulator = AerSimulator()
+compiled_circuit = transpile(qc, simulator)
+sim_result = simulator.run(compiled_circuit, shots=1000).result()
+counts = sim_result.get_counts()
 plot_histogram(counts)
+
+print("Odyssey to Qiskit done!")
 
 
 """
