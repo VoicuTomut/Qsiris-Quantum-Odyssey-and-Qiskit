@@ -53,7 +53,7 @@ def add_odyssey_moment(puzzle_gate, qc):
             This is the default case
         """
         for qubit in range(moment.nr_q):
-            gate_name = moment.original_form[qubit]["GateInSlot"]["Name"]
+            gate_name = moment.original_form[qubit]["GateDefinition"]["Name"]
             if gate_name == "X":
                 qc.x(qubit)
             elif gate_name == "Y":
@@ -71,11 +71,11 @@ def add_odyssey_moment(puzzle_gate, qc):
                 )
             else:
                 unit = extract_odyssey_matrix(
-                    moment.original_form[qubit]["GateInSlot"]["DefinitionMatrix"]
+                    moment.original_form[qubit]["GateDefinition"]["DefinitionMatrix"]
                 )
                 qubits = [k for k in moment.filler_q]
                 qubits.append(qubit)
-                qc.unitary(unit, qubits, moment.original_form[qubit]["GateInSlot"]["Name"])
+                qc.unitary(unit, qubits, moment.original_form[qubit]["GateDefinition"]["Name"])
                 if len(moment.filler_q) > 0:
                     print(
                         "This gate {} is not necessarily converted correctly."
@@ -90,9 +90,9 @@ def add_odyssey_moment(puzzle_gate, qc):
     """
     for i in range(moment.nr_q):
         if (
-            (moment.original_form[i]["GateInSlot"]["Name"] != "CTRL")
-            and (moment.original_form[i]["GateInSlot"]["Name"] != "I")
-            and (moment.original_form[i]["GateInSlot"]["Name"] != "Filler")
+            (moment.original_form[i]["GateDefinition"]["Name"] != "CTRL")
+            and (moment.original_form[i]["GateDefinition"]["Name"] != "I")
+            and (moment.original_form[i]["GateDefinition"]["Name"] != "Filler")
         ):
 
             control = moment.control_q.copy()
@@ -102,7 +102,7 @@ def add_odyssey_moment(puzzle_gate, qc):
             qubits.append(i)
 
             unit = np.identity(2 ** len(qubits), dtype=complex)
-            mat = extract_odyssey_matrix(moment.original_form[i]["GateInSlot"]["DefinitionMatrix"])
+            mat = extract_odyssey_matrix(moment.original_form[i]["GateDefinition"]["DefinitionMatrix"])
             """
             unit[-1][-1]=mat[1][1]
             unit[-1][-2]=mat[1][0]
@@ -119,7 +119,7 @@ def add_odyssey_moment(puzzle_gate, qc):
                 "C "
                 + str(moment.control_q)
                 + " -> "
-                + moment.original_form[i]["GateInSlot"]["Name"]
+                + moment.original_form[i]["GateDefinition"]["Name"]
                 + "["
                 + str(i)
                 + "]",
@@ -149,6 +149,7 @@ def odyssey_to_qiskit(puzzle, incl_initial_state = False,
         qc.initialize(incl_initial_state)
 
     for puzzle_gate in conv._transpose_list(puzzle["PuzzleGates"]):
+
         if use_barrier:
             qc.barrier()
         add_odyssey_moment(puzzle_gate, qc)

@@ -63,6 +63,8 @@ def _transpose_list(A):
     :param A: [[]]
     :return: transpose of A
     """
+
+
     c = len(A[0])
     l = len(A)
 
