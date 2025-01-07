@@ -8,7 +8,9 @@ Quantum Odyssey (QO) can be downloaded [here](https://www.quarksinteractive.com/
 
 ## Run :
 - uvicorn qsiris_cloud:app --host 0.0.0.0 --port 7001 --reload
-
+- run api_test_command
+  (public mac)
+- uvicorn qsiris_cloud:app --host 0.0.0.0 --port 7001 --reload
 
 ## Concept
 
